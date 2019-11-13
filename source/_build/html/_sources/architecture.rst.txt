@@ -1,11 +1,11 @@
-Architecture
+시스템 구조
 =======================================
 
 RUUT 의 시스템 구조
 
 Overall
 --------------------------
-
+.. image:: ../images/architect/overall.png
 
 Miroserivce Architecture
 --------------------------

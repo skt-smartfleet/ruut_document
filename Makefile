@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = Smart[Fleet] Document
+SPHINXPROJ    = RUUT
 SOURCEDIR     = source
 BUILDDIR      = build
 
