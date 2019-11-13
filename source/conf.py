@@ -53,9 +53,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Smart[Fleet] Platform'
+project = 'RUUT'
 copyright = 'SK TELECOM.LTD. ALL RIGHTS RESERVED.'
-author = 'hbahn'
+author = 'harudium'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
