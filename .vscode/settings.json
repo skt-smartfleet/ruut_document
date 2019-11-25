@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\harud\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
+    "python.pythonPath": "/usr/local/bin/python3",
     "restructuredtext.confPath": "${workspaceFolder}\\source"
 }

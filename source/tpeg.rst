@@ -43,11 +43,58 @@ TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 
 .. code-block:: none
 
-  // 원형 geo filter, 모든 교통 정보 표출, 위치 참조 모두 표출, 차선 단위 정보 배제
-  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=tfp&format=tpegMl
+  // 원형 geo filter, TFP application 표출, TPEG ML 형태로 응답
+  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=tec&format=tpegMl
 
 
 TEC (사고/이벤트 정보)
 ''''''''''''''''''''''''''
+
+TEC는 Traffic Event Compact 의 약어로 실시간 교통 이벤트 정보를 (사고, 통제, 공사 등) 제공하는 어플리케이션 입니다. 
+TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.
+
+* :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
+* 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`app`)
+* 메시지 포맷 선택 (`base64xml`, `tpegMl`)
+
+:underline:`Request Example`
+
+.. code-block:: none
+
+  // 원형 geo filter, TEC application 표출, TPEG ML 형태로 응답
+  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=tfp&format=tpegMl
+
 WEA (날씨 정보)
 ''''''''''''''''''''''''''
+
+WEA는 Weather 의 약어로 실시간 날씨 정보를 제공하는 어플리케이션 입니다. 
+WEA 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.
+
+* :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
+* 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`app`)
+* 메시지 포맷 선택 (`base64xml`, `tpegMl`)
+
+:underline:`Request Example`
+
+.. code-block:: none
+
+  // 원형 geo filter, WEA application 표출, TPEG ML 형태로 응답
+  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=wea&format=tpegMl
+
+TPEG 어플리케이션 조합
+''''''''''''''''''''''''''
+
+위에서 설명한 TPEG 어플리케이션은 사용자 편의에 따라 조합하여 요청할 수 있습니다. 하나 이상의 어플리케이션 정보를 확인하려면 아래 항목을 검토 작성하셔야 합니다.
+
+* :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
+* 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`app`). (쉼표 ',') 를 통해 구분하여 여러 어플리케이션 조합 요청 가능
+* 메시지 포맷 선택 (`base64xml`, `tpegMl`)
+
+:underline:`Request Example`
+
+.. code-block:: none
+
+  // 원형 geo filter, WEA, TFP application 표출, TPEG ML 형태로 응답
+  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=wea,tfp&format=tpegMl
+
+

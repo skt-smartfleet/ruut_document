@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#tfp">TFP (교통 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tec">TEC (사고/이벤트 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wea">WEA (날씨 정보)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">TPEG 어플리케이션 조합</a></li>
 </ul>
 </li>
 </ul>
@@ -173,14 +174,100 @@
 </div>
 <div class="section" id="tpeg">
 <h2>TPEG 응답 교통 정보 요청<a class="headerlink" href="#tpeg" title="Permalink to this headline">¶</a></h2>
+<p>RUUT는 TPEG2 표준을 기반으로 3개의 TPEG applications 을 제공합니다. 사용자는 RUUT API 사용과 동일한 사전 작업을 통하여 권한을 획득하고 API 호출을 통해 원하는 사양의 TPEG 메시지를 수신할 수 있습니다.</p>
+<ul class="simple">
+<li><p>Header</p></li>
+</ul>
+<table class="table-width-fix table-width-full text-align-justify docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>option</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content-Type</p></td>
+<td><p>string</p></td>
+<td><p>application/json</p></td>
+<td><p>content type</p></td>
+</tr>
+<tr class="row-odd"><td><p>X-Authorization</p></td>
+<td><p>string</p></td>
+<td><p>{accessToken}</p></td>
+<td><p>API Key</p></td>
+</tr>
+</tbody>
+</table>
+<p>모든 TPEG 메시지는 사용자 편의를 위하여 2가지 메시지 포맷을 지원합니다.</p>
+<ul class="simple">
+<li><p>base64xml : TPEG 메시지 binary 를 base64 encoding 한 후 xml 형태로 응답</p></li>
+<li><p>tpegMl : TPEG 표준에서 정의한 xsd 에 따른 xml 응답</p></li>
+</ul>
 <div class="section" id="tfp">
 <h3>TFP (교통 정보)<a class="headerlink" href="#tfp" title="Permalink to this headline">¶</a></h3>
+<p>TFP는 Traffic Flow and Predictions 의 약어로 실시간 교통 정보 및 예측 교통 정보를 제공하는 어플리케이션 입니다.
+TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
+</ul>
+<p><span class="underline">Request Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TFP application 표출, TPEG ML 형태로 응답
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=tec&amp;format=tpegMl
+</pre></div>
+</div>
 </div>
 <div class="section" id="tec">
 <h3>TEC (사고/이벤트 정보)<a class="headerlink" href="#tec" title="Permalink to this headline">¶</a></h3>
+<p>TEC는 Traffic Event Compact 의 약어로 실시간 교통 이벤트 정보를 (사고, 통제, 공사 등) 제공하는 어플리케이션 입니다.
+TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
+</ul>
+<p><span class="underline">Request Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TEC application 표출, TPEG ML 형태로 응답
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=tfp&amp;format=tpegMl
+</pre></div>
+</div>
 </div>
 <div class="section" id="wea">
 <h3>WEA (날씨 정보)<a class="headerlink" href="#wea" title="Permalink to this headline">¶</a></h3>
+<p>WEA는 Weather 의 약어로 실시간 날씨 정보를 제공하는 어플리케이션 입니다.
+WEA 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
+</ul>
+<p><span class="underline">Request Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA application 표출, TPEG ML 형태로 응답
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea&amp;format=tpegMl
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>TPEG 어플리케이션 조합<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>위에서 설명한 TPEG 어플리케이션은 사용자 편의에 따라 조합하여 요청할 수 있습니다. 하나 이상의 어플리케이션 정보를 확인하려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>). (쉼표 ‘,’) 를 통해 구분하여 여러 어플리케이션 조합 요청 가능</p></li>
+<li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
+</ul>
+<p><span class="underline">Request Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA, TFP application 표출, TPEG ML 형태로 응답
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea,tfp&amp;format=tpegMl
+</pre></div>
+</div>
 </div>
 </div>
 </div>
