@@ -93,7 +93,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">메시지 포맷</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#segment">Segment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#incident">Incident</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tpeg">TPEG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tpeg-tpeg-ml-only">TPEG (TPEG ML Only)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API 규격</a></li>
@@ -172,29 +172,25 @@
 <p>RUUT 는 지도 형태 독립적으로 도로를 관리합니다. 이에 교통 정보를 더 효율적으로 관리할 수 있도록 별도의 도로 링크 형태를 활용하며 이를 시스템 내에서 Segment라 부릅니다.하나의 Segment는 시작 노드(Start Node)와 종료 노드(End Node)를 가진 선형 링크(Linear Link)이며, RUUT 의 모든 기본 정보 제공 단위는 Segment이며 해당 Segment를 활용한 맵 매칭을 위해서 openLR, AGORA-C 와 같은 Dynamic Location Referencing 기법에 따른 위치 참조 코드를 제공하고 있습니다. Dynamic Location Referencing 기법을 활용하기 어려운 light 사용자를 위하여 Segment의 시작/끝 지점에 대한 GPS 좌표를 동시에 제공하고 있습니다.</p>
 <p>RUUT 를 구성하는 가장 기본 구성 단위이기 때문에 Segment 를 endpoint 로 하는 API 요청 응답은 Segment 기반으로 실시간/예측 교통 정보를 전달하고 해당 메시지 포맷은 아래 코드 블록과 같습니다.</p>
 <p><strong>Segment 메시지 응답</strong></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
-  &quot;segments&quot;: [{
-    &quot;segmentId&quot;: &quot;ID of the filtered segment&quot;,
-    &quot;roadCate&quot;: &quot;FRC number of the road on the segment&quot;,
-    &quot;speed&quot;: &quot;current speed of the segment&quot;,
-    &quot;limit&quot;: &quot;speed limit of the segment&quot;,
-    &quot;freeflow&quot;: &quot;free flow speed of the segment&quot;,
-    &quot;travelTime&quot;: &quot;estimated time to traverse the segment&quot;,
-    &quot;openLR&quot;: &quot;openLR code of the segment&quot;,
-    &quot;agoraC&quot;: &quot;AGORA-C code of the segment&quot;,
-    &quot;gps-coordinates&quot;: &quot;gps coordinates of the start/end node of the segment&quot;,
-
-    // only for predict response
-    &quot;confidenceLevel&quot;: &quot;Level of confidence of the traffic prediction&quot;,
-
-    // only if when the data is exist
-    &quot;lane&quot;: [{
-      &quot;laneNumber&quot;: &quot;Lane number&quot;,
-      &quot;laneSpeed&quot;: &quot;dedicated speed of the lane on the segment&quot;
-    }],
-    &quot;timeStamp&quot;: &quot;timestamp of the information&quot;
-  }]
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;segments&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">&quot;segmentId&quot;</span><span class="p">:</span> <span class="s2">&quot;ID of the filtered segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;roadCate&quot;</span><span class="p">:</span> <span class="s2">&quot;FRC number of the road on the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;speed&quot;</span><span class="p">:</span> <span class="s2">&quot;current speed of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="s2">&quot;speed limit of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;freeflow&quot;</span><span class="p">:</span> <span class="s2">&quot;free flow speed of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;travelTime&quot;</span><span class="p">:</span> <span class="s2">&quot;estimated time to traverse the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;openLR&quot;</span><span class="p">:</span> <span class="s2">&quot;openLR code of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;agoraC&quot;</span><span class="p">:</span> <span class="s2">&quot;AGORA-C code of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;gps-coordinates&quot;</span><span class="p">:</span> <span class="s2">&quot;gps coordinates of the start/end node of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;confidenceLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;Level of confidence of the traffic prediction (prediction only)&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lane&quot;</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="nt">&quot;laneNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;Lane number&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;laneSpeed&quot;</span><span class="p">:</span> <span class="s2">&quot;dedicated speed of the lane on the segment&quot;</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;timeStamp&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp of the information&quot;</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -229,8 +225,146 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="tpeg">
-<h2>TPEG<a class="headerlink" href="#tpeg" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tpeg-tpeg-ml-only">
+<h2>TPEG (TPEG ML Only)<a class="headerlink" href="#tpeg-tpeg-ml-only" title="Permalink to this headline">¶</a></h2>
+<p><strong>TPEG ML TFP</strong></p>
+<p>필드 계층 구조가 복잡 하므로 본 메시지에 대해서만 기술 합니다.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TPEGDocument&gt;</span>
+  <span class="nt">&lt;TransportFrame&gt;</span>
+      <span class="nt">&lt;ServiceData&gt;</span>
+        <span class="nt">&lt;SID&gt;</span>
+            TPEG Service ID
+        <span class="nt">&lt;/SID&gt;</span>
+        <span class="nt">&lt;ApplicationRootMessageML</span> <span class="na">xsi:type=</span><span class="s">&quot;tfp:TFPMessage&quot;</span> <span class="na">xmlns:tfp=</span><span class="s">&quot;http://www.tisa.org/TPEG/TFP_1_0&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tfp:mmt&gt;</span>
+              <span class="nt">&lt;tfp:optionMessageManagement&gt;</span>
+                  <span class="nt">&lt;mmc:messageID&gt;</span>&quot;ID&quot;<span class="nt">&lt;/mmc:messageID&gt;</span>
+                  <span class="nt">&lt;mmc:versionID&gt;</span>ID<span class="nt">&lt;/mmc:versionID&gt;</span>
+                  <span class="nt">&lt;mmc:messageExpiryTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageExpiryTime&gt;</span>
+                  <span class="nt">&lt;mmc:cancelFlag&gt;</span>boolean<span class="nt">&lt;/mmc:cancelFlag&gt;</span>
+                  <span class="nt">&lt;mmc:messageGenerationTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageGenerationTime&gt;</span>
+              <span class="nt">&lt;/tfp:optionMessageManagement&gt;</span>
+          <span class="nt">&lt;/tfp:mmt&gt;</span>
+          <span class="nt">&lt;tfp:method</span> <span class="na">xsi:type=</span><span class="s">&quot;tfp:FlowStatus&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;tfp:startTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/tfp:startTime&gt;</span>
+              <span class="nt">&lt;tfp:duration&gt;</span>0<span class="nt">&lt;/tfp:duration&gt;</span>
+              <span class="nt">&lt;tfp:status&gt;</span>
+                  <span class="nt">&lt;tfp:LOS</span> <span class="na">tfp:code=</span><span class="s">&quot;2&quot;</span> <span class="na">tfp:table=</span><span class="s">&quot;tfp003_LevelOfService&quot;</span><span class="nt">/&gt;</span>
+                  <span class="nt">&lt;tfp:averageSpeed&gt;</span>37<span class="nt">&lt;/tfp:averageSpeed&gt;</span>
+                  <span class="nt">&lt;tfp:freeFlowTravelTime&gt;</span>60<span class="nt">&lt;/tfp:freeFlowTravelTime&gt;</span>
+              <span class="nt">&lt;/tfp:status&gt;</span>
+              <span class="nt">&lt;tfp:restriction&gt;</span>
+                  <span class="nt">&lt;tfp:lanes</span> <span class="na">tfp:code=</span><span class="s">&quot;0&quot;</span> <span class="na">tfp:table=</span><span class="s">&quot;tfp005_laneRestriction&quot;</span><span class="nt">/&gt;</span>
+              <span class="nt">&lt;/tfp:restriction&gt;</span>
+                  <span class="nt">&lt;tfp:cause</span> <span class="na">tfp:code=</span><span class="s">&quot;0&quot;</span> <span class="na">tfp:table=</span><span class="s">&quot;tfp006_CauseCode&quot;</span><span class="nt">/&gt;</span>
+              <span class="nt">&lt;tfp:detailedCause&gt;</span>
+                  <span class="nt">&lt;tfp:messageID&gt;</span>53694<span class="nt">&lt;/tfp:messageID&gt;</span>
+                  <span class="nt">&lt;tfp:COID&gt;</span>0<span class="nt">&lt;/tfp:COID&gt;</span>
+              <span class="nt">&lt;/tfp:detailedCause&gt;</span>
+          <span class="nt">&lt;/tfp:method&gt;</span>
+          <span class="nt">&lt;tfp:loc&gt;</span>LocationReferenceCode<span class="nt">&lt;/tfp:loc&gt;</span>
+        <span class="nt">&lt;/ApplicationRootMessageML&gt;</span>
+      <span class="nt">&lt;/ServiceData&gt;</span>
+  <span class="nt">&lt;/TransportFrame&gt;</span>
+<span class="nt">&lt;/TPEGDocument&gt;</span>
+</pre></div>
+</div>
+<p><strong>TPEG ML TEC</strong></p>
+<p>필드 계층 구조가 복잡 하므로 본 메시지에 대해서만 기술 합니다.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TPEGDocument&gt;</span>
+  <span class="nt">&lt;TransportFrame&gt;</span>
+      <span class="nt">&lt;ServiceData&gt;</span>
+        <span class="nt">&lt;SID&gt;</span>
+          TPEG Service ID
+        <span class="nt">&lt;/SID&gt;</span>
+        <span class="nt">&lt;ApplicationRootMessageML</span> <span class="na">xsi:type=</span><span class="s">&quot;tec:TECMessage&quot;</span> <span class="na">xmlns:tec=</span><span class="s">&quot;http://www.tisa.org/TPEG/TEC_3_2&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tec:mmt&gt;</span>
+            <span class="nt">&lt;tec:optionMessageManagement&gt;</span>
+              <span class="nt">&lt;mmc:messageID&gt;</span>&quot;ID&quot;<span class="nt">&lt;/mmc:messageID&gt;</span>
+              <span class="nt">&lt;mmc:versionID&gt;</span>ID<span class="nt">&lt;/mmc:versionID&gt;</span>
+              <span class="nt">&lt;mmc:messageExpiryTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageExpiryTime&gt;</span>
+              <span class="nt">&lt;mmc:cancelFlag&gt;</span>false<span class="nt">&lt;/mmc:cancelFlag&gt;</span>
+              <span class="nt">&lt;mmc:messageGenerationTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageGenerationTime&gt;</span>
+            <span class="nt">&lt;/tec:optionMessageManagement&gt;</span>
+          <span class="nt">&lt;/tec:mmt&gt;</span>
+          <span class="nt">&lt;tec:event&gt;</span>
+            <span class="nt">&lt;tec:effectCode</span> <span class="na">tec:code=</span><span class="s">&quot;4&quot;</span> <span class="na">tec:table=</span><span class="s">&quot;tec001_EffectCode&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;tec:startTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/tec:startTime&gt;</span>
+            <span class="nt">&lt;tec:stopTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/tec:stopTime&gt;</span>
+            <span class="nt">&lt;tec:cause&gt;</span>
+              <span class="nt">&lt;tec:optionDirectCause&gt;</span>
+                <span class="nt">&lt;tec:mainCause</span> <span class="na">tec:code=</span><span class="s">&quot;2&quot;</span> <span class="na">tec:table=</span><span class="s">&quot;tec002_CauseCode&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;tec:warningLevel</span> <span class="na">tec:code=</span><span class="s">&quot;0&quot;</span> <span class="na">tec:table=</span><span class="s">&quot;tec003_WarningLevel&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;tec:unverifiedInformation&gt;</span>boolean<span class="nt">&lt;/tec:unverifiedInformation&gt;</span>
+                <span class="nt">&lt;tec:subCause</span> <span class="na">tec:code=</span><span class="s">&quot;7&quot;</span> <span class="na">tec:table=</span><span class="s">&quot;tec100_SubCause&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;tec:laneRestrictionType</span> <span class="na">tec:code=</span><span class="s">&quot;0&quot;</span> <span class="na">tec:table=</span><span class="s">&quot;tec004_LaneRestriction&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;tec:freeText&gt;</span>
+                  <span class="nt">&lt;tdt:languageCode</span> <span class="na">tdt:code=</span><span class="s">&quot;85&quot;</span> <span class="na">tdt:table=</span><span class="s">&quot;typ001_LanguageCode&quot;</span><span class="nt">/&gt;</span>
+                  <span class="nt">&lt;tdt:value&gt;&lt;서비스제공자&gt;</span>이벤트 세부 명세<span class="nt">&lt;/tdt:value&gt;</span>
+                <span class="nt">&lt;/tec:freeText&gt;</span>
+              <span class="nt">&lt;/tec:optionDirectCause&gt;</span>
+            <span class="nt">&lt;/tec:cause&gt;</span>
+          <span class="nt">&lt;/tec:event&gt;</span>
+          <span class="nt">&lt;tec:loc&gt;</span>LocationReferenceCode<span class="nt">&lt;/tec:loc&gt;</span>
+        <span class="nt">&lt;/ApplicationRootMessageML&gt;</span>
+      <span class="nt">&lt;/ServiceData&gt;</span>
+  <span class="nt">&lt;/TransportFrame&gt;</span>
+<span class="nt">&lt;/TPEGDocument&gt;</span>
+</pre></div>
+</div>
+<p><strong>TPEG ML WEA</strong></p>
+<p>필드 계층 구조가 복잡 하므로 본 메시지에 대해서만 기술 합니다.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;TPEGDocument&gt;</span>
+  <span class="nt">&lt;TransportFrame&gt;</span>
+      <span class="nt">&lt;ServiceData&gt;</span>
+          <span class="nt">&lt;SID&gt;</span>
+              TPEG Service ID
+          <span class="nt">&lt;/SID&gt;</span>
+          <span class="nt">&lt;ApplicationRootMessageML</span> <span class="na">xsi:type=</span><span class="s">&quot;wea:WeatherMessage&quot;</span> <span class="na">xmlns:wea=</span><span class="s">&quot;http://www.tisa.org/TPEG/WEA_1_1&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;wea:mmt&gt;</span>
+                  <span class="nt">&lt;wea:optionMessageManagementContainerLink&gt;</span>
+                      <span class="nt">&lt;mmc:messageID&gt;</span>&quot;ID&quot;<span class="nt">&lt;/mmc:messageID&gt;</span>
+                              <span class="nt">&lt;mmc:versionID&gt;</span>ID<span class="nt">&lt;/mmc:versionID&gt;</span>
+                              <span class="nt">&lt;mmc:messageExpiryTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageExpiryTime&gt;</span>
+                              <span class="nt">&lt;mmc:cancelFlag&gt;</span>false<span class="nt">&lt;/mmc:cancelFlag&gt;</span>
+                              <span class="nt">&lt;mmc:messageGenerationTime&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/mmc:messageGenerationTime&gt;</span>
+                  <span class="nt">&lt;/wea:optionMessageManagementContainerLink&gt;</span>
+              <span class="nt">&lt;/wea:mmt&gt;</span>
+              <span class="nt">&lt;wea:weatherInfo&gt;</span>
+                  <span class="nt">&lt;wea:geographicalSignificance</span> <span class="na">wea:code=</span><span class="s">&quot;6&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea011_GeoSignificance&quot;</span><span class="nt">/&gt;</span>
+                  <span class="nt">&lt;wea:weatherReport&gt;</span>
+                      <span class="nt">&lt;wea:reportType</span> <span class="na">wea:code=</span><span class="s">&quot;4&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea000_ReportType&quot;</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;wea:weatherDefinition&gt;</span>
+                          <span class="nt">&lt;wea:period</span> <span class="na">wea:code=</span><span class="s">&quot;0&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea001_Period&quot;</span><span class="nt">/&gt;</span>
+                          <span class="nt">&lt;wea:weatherDescription&gt;</span>
+                              <span class="nt">&lt;wea:subTableType</span> <span class="na">wea:code=</span><span class="s">&quot;108&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea100_ElementType&quot;</span><span class="nt">/&gt;</span>
+                              <span class="nt">&lt;wea:subTableValue</span> <span class="na">wea:code=</span><span class="s">&quot;7&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea099_ElementSubTable&quot;</span><span class="nt">/&gt;</span>
+                          <span class="nt">&lt;/wea:weatherDescription&gt;</span>
+                          <span class="nt">&lt;wea:start&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/wea:start&gt;</span>
+                          <span class="nt">&lt;wea:stop&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/wea:stop&gt;</span>
+                          <span class="nt">&lt;wea:date&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/wea:date&gt;</span>
+                          <span class="nt">&lt;wea:statistics&gt;</span>
+                              <span class="nt">&lt;wea:cloudCover&gt;</span>Coverage of cloud<span class="nt">&lt;/wea:cloudCover&gt;</span>
+                              <span class="nt">&lt;wea:pressure&gt;</span>Air pressure<span class="nt">&lt;/wea:pressure&gt;</span>
+                              <span class="nt">&lt;wea:temp&gt;</span>Temperature (Celcius)<span class="nt">&lt;/wea:temp&gt;</span>
+                              <span class="nt">&lt;wea:tempMax&gt;</span>Max temperature (Celcius)<span class="nt">&lt;/wea:tempMax&gt;</span>
+                              <span class="nt">&lt;wea:tempMin&gt;</span>Min temperature (Celcius)<span class="nt">&lt;/wea:tempMin&gt;</span>
+                              <span class="nt">&lt;wea:windDirection</span> <span class="na">wea:code=</span><span class="s">&quot;2&quot;</span> <span class="na">wea:table=</span><span class="s">&quot;wea003_Direction&quot;</span><span class="nt">/&gt;</span>
+                              <span class="nt">&lt;wea:windSpeed&gt;</span>Wind speed<span class="nt">&lt;/wea:windSpeed&gt;</span>
+                              <span class="nt">&lt;wea:relativeHumidity&gt;</span>Humidity<span class="nt">&lt;/wea:relativeHumidity&gt;</span>
+                              <span class="nt">&lt;wea:sunrise&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/wea:sunrise&gt;</span>
+                              <span class="nt">&lt;wea:sunset&gt;</span>YYYY-MM-DDTHH: MM: SSZ<span class="nt">&lt;/wea:sunset&gt;</span>
+                          <span class="nt">&lt;/wea:statistics&gt;</span>
+                      <span class="nt">&lt;/wea:weatherDefinition&gt;</span>
+                  <span class="nt">&lt;/wea:weatherReport&gt;</span>
+              <span class="nt">&lt;/wea:weatherInfo&gt;</span>
+              <span class="nt">&lt;wea:loc&gt;</span>LocationReferenceCode<span class="nt">&lt;/wea:loc&gt;</span>
+          <span class="nt">&lt;/ApplicationRootMessageML&gt;</span>
+      <span class="nt">&lt;/ServiceData&gt;</span>
+  <span class="nt">&lt;/TransportFrame&gt;</span>
+<span class="nt">&lt;/TPEGDocument&gt;</span>ß
+</pre></div>
+</div>
 </div>
 </div>
 
