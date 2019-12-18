@@ -60,12 +60,9 @@ Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등
       "segmentId": "ID of the segment where the events are occurred",
       "incidentId": "ID of the incident",
       "incidentType": "type of the incident",
-      "severity": "severity of the incident",
-      "impacting": "whether the incident has an impact to traffic flow",
-      "status": "incident status",
       "lane": "lane number of the event",
       "length": "length of the incident has occurred",
-      "vehicleKind": "이게 뭘까요?",
+      "vehicleKind": "type of the vehicle",
       "description": "detail explanation of the incident",
       "schedule": {
         "isPlanned": "whether the event is planned of not",

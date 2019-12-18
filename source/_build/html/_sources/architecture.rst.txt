@@ -9,7 +9,7 @@ Overall
 
 Miroserivce Architecture
 --------------------------
-
+.. image:: ../images/architect/msa.png
 
 Architecture Internals
 --------------------------

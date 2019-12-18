@@ -60,12 +60,9 @@ Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등
       "segmentId": "ID of the segment where the events are occurred",
       "incidentId": "ID of the incident",
       "incidentType": "type of the incident",
-      "severity": "severity of the incident",
-      "impacting": "whether the incident has an impact to traffic flow",
-      "status": "incident status",
       "lane": "lane number of the event",
       "length": "length of the incident has occurred",
-      "vehicleKind": "이게 뭘까요?",
+      "vehicleKind": "type of the vehicle",
       "description": "detail explanation of the incident",
       "schedule": {
         "isPlanned": "whether the event is planned of not",
@@ -84,5 +81,59 @@ Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등
   }
 
 
-TPEG
+TPEG (TPEG ML Only)
 ---------------------
+
+**TPEG ML TFP**
+
+.. code-block:: json
+
+<?xml version="1.0" encoding="UTF-8"?>
+<TPEGDocument docType="fullRepository" version="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.tisa.org/TPEG/SFW_1_1" xmlns:tdt="http://www.tisa.org/TPEG/TPEGDataTypes_2_0" xmlns:mmc="http://www.tisa.org/TPEG/MMC_1_1">
+	<TransportFrame>
+		<ServiceData>
+			<SID>
+				<tdt:SID_A>30</tdt:SID_A>
+				<tdt:SID_B>4</tdt:SID_B>
+				<tdt:SID_C>247</tdt:SID_C>
+			</SID>
+			<ServEncID>0</ServEncID>
+			<ServiceComponentMultiplex>
+				<ServiceComponent>
+					<ServiceComponentFrameContent xsi:type="ServCompFrameProtected">
+						<SCID>5</SCID>
+						<ApplicationRootMessage>
+							<ApplicationRootMessageML xsi:type="tec:TECMessage" xmlns:tec="http://www.tisa.org/TPEG/TEC_3_2">
+								<tec:mmt>
+									<tec:optionMessageManagement>
+										<mmc:messageID>0</mmc:messageID>
+										<mmc:versionID>0</mmc:versionID>
+										<mmc:messageExpiryTime>1970-01-01T00: 00: 00Z</mmc:messageExpiryTime>
+										<mmc:cancelFlag>true</mmc:cancelFlag>
+										<mmc:messageGenerationTime>1970-01-01T00: 00: 00Z</mmc:messageGenerationTime>
+									</tec:optionMessageManagement>
+								</tec:mmt>
+							</ApplicationRootMessageML>
+						</ApplicationRootMessage>
+					</ServiceComponentFrameContent>
+					<ServiceComponentFrameContent xsi:type="ServCompFrameProtected">
+						<SCID>6</SCID>
+						<ApplicationRootMessage>
+							<ApplicationRootMessageML xsi:type="wea:WeatherMessage" xmlns:wea="http://www.tisa.org/TPEG/WEA_1_1">
+								<wea:mmt>
+									<wea:optionMessageManagementContainerLink>
+										<mmc:messageID>0</mmc:messageID>
+										<mmc:versionID>0</mmc:versionID>
+										<mmc:messageExpiryTime>1970-01-01T00: 00: 00Z</mmc:messageExpiryTime>
+										<mmc:cancelFlag>true</mmc:cancelFlag>
+										<mmc:messageGenerationTime>1970-01-01T00: 00: 00Z</mmc:messageGenerationTime>
+									</wea:optionMessageManagementContainerLink>
+								</wea:mmt>
+							</ApplicationRootMessageML>
+						</ApplicationRootMessage>
+					</ServiceComponentFrameContent>
+				</ServiceComponent>
+			</ServiceComponentMultiplex>
+		</ServiceData>
+	</TransportFrame>
+</TPEGDocument>
