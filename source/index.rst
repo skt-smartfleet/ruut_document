@@ -16,20 +16,15 @@ SKT 의 도로 교통 정보 플랫폼인 RUUT 기술 문서를 방문해 주신
 
 문서 내 도움이 필요하실 경우 admin_ruut@sktelecom.com 으로 연락 주시기 바랍니다.
 
-Quick Start
---------------------------
-* 계정 생성
-* 로그인을 통한 인증 토큰 획득
-* 인증 토큰을 Key 로 하여 API 호출
-
 Contents
 --------------------------
 
 .. toctree::
    :maxdepth: 3
    :glob:
+   :numbered:
 
-   architecture
+   introduction   
    functions
    skt
    tpeg
