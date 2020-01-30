@@ -97,11 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#ruut-api-tpeg2">2.2. RUUT API 응답 및 TPEG2 메시지 제공</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rna-road-network-analysis">2.3. RNA (Road Network Analysis, 서비스 예정)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v2x">2.4. V2X 서비스</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#map-agnostic-location-referencing">2.5. Map Agnostic Location Referencing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#openlr">2.5.1. openLR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#agora-c">2.5.2. AGORA-C</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#map-agnostic-location-referencing">2.5. Map Agnostic Location Referencing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">2.6. 차선 단위 교통 정보 제공</a></li>
 </ul>
 </li>
@@ -229,20 +225,17 @@
 </div>
 <div class="section" id="map-agnostic-location-referencing">
 <h2>2.5. Map Agnostic Location Referencing<a class="headerlink" href="#map-agnostic-location-referencing" title="Permalink to this headline">¶</a></h2>
-<p>교통 정보 서비스를 제공 하기 위해서는 도로의 어느 영역 데이터 인지를 확인할 수 있어야 합니다.</p>
+<p>위치 정보에 대해서는 GPS 좌표계를 이용하여 공통의 인터페이스를 확보할 수 있으나 지도를 표현하는 방식에 있어서는 공급 주체에 따라 다른 형태가 제공되는 경우가 있습니다. 일례로 국내 도로 위치 참조 표준으로 사용되는 ITS표준노드링크(KS Link)가 있음에도 국내외 민간 기업은 별도의 규격을 정의해서 사용 합니다.</p>
 <img alt="_images/lr.png" src="_images/lr.png" />
-<div class="section" id="openlr">
-<h3>2.5.1. openLR<a class="headerlink" href="#openlr" title="Permalink to this headline">¶</a></h3>
-<p>OpenLR 은 TOMTOM 에서 개발한 open standard 의 지도 형태에 독립적인 위치 참조 규격 입니다. 원본 맵 제공자는 OpenLR 표준 규격에 따라서 원본 맵을 인코딩 하게 됩니다. 이렇게 인코딩 된 결과는 맵 형태에 무관하게 openLR 표준 규격으로 디코딩하여 활용할 수 있습니다. RUUT 의 다양한 실시간 교통 정보는 T map 의 고유 맵 규격을 기반으로 생성 및 가공되나 해당 정보의 최종 소비자가 사용하는 맵의 형태에 따라 openLR 디코딩을 통하여 손쉽게 적용할 수 있습니다. RUUT의 교통 정보는 노드-링크 형태의 위치 참조 방식 위에서 구현되므로 openLR 인코딩 규격 중 line 방식 인코딩을 지원합니다. OpenLR 은 간결함과 확장성을 바탕으로 다양한 모빌리티 관련 기업이 지원하고 있습니다. OpenLR 의 컨셉 및 디코딩 방식에 대해서는 openLR 공식 문서를 참조하시기 바랍니다.</p>
-</div>
-<div class="section" id="agora-c">
-<h3>2.5.2. AGORA-C<a class="headerlink" href="#agora-c" title="Permalink to this headline">¶</a></h3>
-<p>AGORA-C 는 ISO 국제 표준 위치 참조 규격 입니다.</p>
-</div>
+<p>각기 다른 위치 참조 규격 지원 및 맵DB 갱신 관리에 따르는 불편과 자원 낭비를 최소화 하고 호환성을 높이기 위해서 RUUT는 맵 규격에 독립적인 동적 위치 참조 규격을 지원합니다. 이는 별도 맵DB 없이 정해진 scheme 에 따라 인코딩 하여 정보를 전달하고 해당 정보를 다시 디코딩 한 후 사용 주체의 지도에 맵핑하여 사용하게 됩니다. RUUT는 국내외에서 가장 많이 사용되고 있는 AGORA-C 와 openLR 규격을 지원합니다.</p>
+<p><strong>AGORA-C</strong></p>
+<p>유럽에서 기존의 위치 참조 규격의 문제점을 해소하기 위하여 표준 동적 위치 참조 규격을 개발하기로 하였으며 해당 프로젝트를 AGORA 로 명명 하였습니다. 이렇게 개발된 AGORA 규격의 compact 버전으로 개선된 규격이 AGORA-C 입니다. AGORA-C 는 ISO 표준이며 표준특허를 보유한 까닭에 사용하려면 별도의 라이센스 비용을 지불하여야 합니다.</p>
+<p><strong>openLR</strong></p>
+<p>openLR 은 세계적인 네비게이션/지도 서비스 업체인 TomTom 에서 개발한 동적 위치 참조 규격입니다. openLR 은 AGORA-C 와 달리 별도 라이센스 비용이 없는 공개 표준 입니다. 그런 이유로 많은 다국적 기업에서 별도 비용을 지불하지 않는 openLR 에 대한 파트너십을 강화하고 있는 추세입니다.</p>
 </div>
 <div class="section" id="id3">
 <h2>2.6. 차선 단위 교통 정보 제공<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>RUUT 는 도로 특정 영역에 대하여 차선 단위 교통 정보를 제공합니다.</p>
+<p>RUUT 는 도로 특정 영역에 대하여 차선 단위 교통 정보를 제공합니다. 2차선 이상의 도로에서 도로 가장 안쪽 차선 또는 가장 바깥쪽 차선 중 회전 구간과 연결되는 차선에 한하여 회전 구간 이후의 실시간 교통 정보를 반영하여 보정된 차선 단위 교통 정보(주행 속도)를 제공할 수 있습니다.</p>
 <img alt="_images/lane.png" src="_images/lane.png" />
 </div>
 </div>
