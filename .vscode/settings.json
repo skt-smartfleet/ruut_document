@@ -1,4 +1,4 @@
 {
     "python.pythonPath": "/usr/local/bin/python3",
-    "restructuredtext.confPath": "${workspaceFolder}\\source"
+    "restructuredtext.confPath": "${workspaceFolder}/source"
 }

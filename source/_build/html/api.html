@@ -113,15 +113,16 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v2x">6.3. V2X</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">6.3.1. 전방 급정거 알림</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">6.3.2. 응급 차량 접근 알림</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v2x-webhook">6.3.1. V2X Webhook 관리</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">6.3.2. 응급 차량 출동 알림</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v2n">6.3.3. 기타 V2N 상태 알림</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ruut-tpeg">6.4. RUUT TPEG</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#tpeg2">6.4.1. TPEG2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#request-parameters-tpeg2">6.4.1.1. Request Parameters (TPEG2)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#response-formats-tpeg2">6.4.1.2. Response Formats (TPEG2)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">6.4.1.3. Request/Response Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6.4.1.3. Request/Response Example</a></li>
 </ul>
 </li>
 </ul>
@@ -298,7 +299,7 @@
 <tr class="row-odd"><td><p>regionId</p></td>
 <td><p>Integer</p></td>
 <td><p>지역코드</p></td>
-<td><p>행정 구역 단위 필터링을 위한 지역 코드 <a class="footnote-reference brackets" href="#id12" id="id4">1</a></p></td>
+<td><p>행정 구역 단위 필터링을 위한 지역 코드 <a class="footnote-reference brackets" href="#id11" id="id4">1</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -549,13 +550,13 @@
 <td><p>Array</p></td>
 <td><p>차선 교통 정보 제공을 위한 배열 객체</p></td>
 </tr>
-<tr class="row-even"><td><p>ㄴ laneNumber</p></td>
+<tr class="row-even"><td><p>laneNumber</p></td>
 <td><p>String</p></td>
-<td><p>차선 번호 (안쪽 차선부터 1차선)</p></td>
+<td><p>lane 의 하위 멤버. 차선 번호 (안쪽 차선부터 1차선)</p></td>
 </tr>
-<tr class="row-odd"><td><p>ㄴ laneSpeed</p></td>
+<tr class="row-odd"><td><p>laneSpeed</p></td>
 <td><p>Integer</p></td>
-<td><p><a href="#id7"><span class="problematic" id="id8">`</span></a>laneNumber`로 특정된 차선의 측정 속도</p></td>
+<td><p>lane 의 하위 멤버. <a href="#id7"><span class="problematic" id="id8">`</span></a>laneNumber`로 특정된 차선의 측정 속도</p></td>
 </tr>
 <tr class="row-even"><td><p>timeStamp</p></td>
 <td><p>Datetime</p></td>
@@ -778,33 +779,33 @@
 <td><p>Object</p></td>
 <td><p>이벤트에 일정에 있을 때 제공되는 오브젝트 (이벤트 일정이 있는 경우에만 기본 제공)</p></td>
 </tr>
-<tr class="row-even"><td><p>ㄴ isPlanned</p></td>
+<tr class="row-even"><td><p>isPlanned</p></td>
 <td><p>String</p></td>
-<td><p>계획된 이벤트인지 여부</p></td>
+<td><p>schedule 하위 멤버. 계획된 이벤트인지 여부</p></td>
 </tr>
-<tr class="row-odd"><td><p>ㄴ startTime</p></td>
+<tr class="row-odd"><td><p>startTime</p></td>
 <td><p>Datetime</p></td>
-<td><p>이벤트 개시 시점</p></td>
+<td><p>schedule 하위 멤버. 이벤트 개시 시점</p></td>
 </tr>
-<tr class="row-even"><td><p>ㄴ endTime</p></td>
+<tr class="row-even"><td><p>endTime</p></td>
 <td><p>Datetime</p></td>
-<td><p>이벤트 종료 시점</p></td>
+<td><p>schedule 하위 멤버. 이벤트 종료 시점</p></td>
 </tr>
-<tr class="row-odd"><td><p>ㄴ reoccuring</p></td>
+<tr class="row-odd"><td><p>reoccuring</p></td>
 <td><p>Object</p></td>
-<td><p>반복 이벤트인지 여부에 따라 제공되는 오브젝트</p></td>
+<td><p>schedule 하위 멤버. 반복 이벤트인지 여부에 따라 제공되는 오브젝트</p></td>
 </tr>
-<tr class="row-even"><td><p>ㄴ daysOfWeek</p></td>
+<tr class="row-even"><td><p>daysOfWeek</p></td>
 <td><p>String</p></td>
-<td><p>일주일 중 언제 반복 발생하는지</p></td>
+<td><p>schedule 하위 멤버. 일주일 중 언제 반복 발생하는지</p></td>
 </tr>
-<tr class="row-odd"><td><p>ㄴ from</p></td>
+<tr class="row-odd"><td><p>from</p></td>
 <td><p>String</p></td>
-<td><p>반복 이벤트 시작 시점</p></td>
+<td><p>schedule 하위 멤버. 반복 이벤트 시작 시점</p></td>
 </tr>
-<tr class="row-even"><td><p>ㄴ until</p></td>
+<tr class="row-even"><td><p>until</p></td>
 <td><p>String</p></td>
-<td><p>반복 이벤트 종료 시점</p></td>
+<td><p>schedule 하위 멤버. 반복 이벤트 종료 시점</p></td>
 </tr>
 <tr class="row-odd"><td><p>openLR</p></td>
 <td><p>String</p></td>
@@ -870,12 +871,116 @@
 </div>
 <div class="section" id="v2x">
 <span id="v2x-apidoc"></span><h2>6.3. V2X<a class="headerlink" href="#v2x" title="Permalink to this headline">¶</a></h2>
-<p>RUUT 를 통해 T Map 에서 서비스 되고 있는 2가지 V2X 서비스인 전방 급정거 알림 및 응급 차량 접근 알림 서비스의 원시 데이터를 능동적으로 획득할 수 있습니다. API 호출을 통하여 서버 URI 및 요청 서비스 데이터를 등록하면 RUUT 에서 매 이벤트 발생 시 마다 등록된 URI 로 V2X 서비스의 원시 데이터를 PUSH 메시지로 전달해 드립니다.</p>
-<div class="section" id="id9">
-<h3>6.3.1. 전방 급정거 알림<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>RUUT 는 T Map 에서 서비스 되고 있는 V2X 서비스 (응급 차량 출동 알림, 전방 급정거 알림) 및 기타 V2X 서비스의 원시 데이터를 제공 합니다. V2X 데이터는 webhook 방식으로 제공 됩니다.</p>
+<ul class="simple">
+<li><p>Header</p></li>
+</ul>
+<table class="table-width-fix table-width-full text-align-justify docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 13%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>option</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>X-Authorization</p></td>
+<td><p>string</p></td>
+<td><p>{accessToken}</p></td>
+<td><p>API Key</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="v2x-webhook">
+<h3>6.3.1. V2X Webhook 관리<a class="headerlink" href="#v2x-webhook" title="Permalink to this headline">¶</a></h3>
+<p>V2X 서비스 데이터를 획득 하려면 각 서비스의 유형에 맞는 Webhook URL 을 등록 합니다. 사용자는 Webhook URL의 등록/수정/삭제를 수행할 수 있습니다.</p>
+<p><strong>Webhook URL 등록</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>POST</strong></p></td>
+<td><p><cite>/ruut/{version}/hooks</cite></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Request Body</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>key</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>url</p></td>
+<td><p>hook_url</p></td>
+<td><p>V2X webhook 을 수신할 URL</p></td>
+</tr>
+<tr class="row-odd"><td><p>String</p></td>
+<td><p>locationReference</p></td>
+<td><p>openLR</p></td>
+<td><p>위치 참조 타입 openLR 명시</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>agoraC</p></td>
+<td><p>위치 참조 타입 AGORA-C 명시</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>segmentID</p></td>
+<td><p>위치 참조 타입 Segment ID 명시 (RUUT 자체 타입)</p></td>
+</tr>
+<tr class="row-even"><td><p>String List</p></td>
+<td><p>events</p></td>
+<td><p>emergencyVehicle</p></td>
+<td><p>응급 차량 알림 메시지 수신</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>otherEvents</p></td>
+<td><p>급정거 알림 및 기타 알림 메시지 수신</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request Example</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;http://v2xhook.test&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;locationReference&quot;</span><span class="p">:</span><span class="s2">&quot;openLR&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;events&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;emergencyVehicle&quot;</span><span class="p">,</span> <span class="s2">&quot;otherEvents&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="id10">
-<h3>6.3.2. 응급 차량 접근 알림<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p><strong>Webhook URL 수정</strong>
+<strong>Webhook URL 삭제</strong></p>
+<p><strong>V2X 서비스 명세</strong></p>
+</div>
+<div class="section" id="id9">
+<h3>6.3.2. 응급 차량 출동 알림<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v2n">
+<h3>6.3.3. 기타 V2N 상태 알림<a class="headerlink" href="#v2n" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="ruut-tpeg">
@@ -973,8 +1078,8 @@
 * TPEG2 ML</p>
 <p>각 응답 포맷에 대한 세부 사항은 TPEG2 표준 문서를 참고 하시기 바랍니다.</p>
 </div>
-<div class="section" id="id11">
-<h4>6.4.1.3. Request/Response Example<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>6.4.1.3. Request/Response Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p><strong>Request Example</strong></p>
 <table class="docutils align-default">
 <colgroup>
@@ -1058,7 +1163,7 @@
 </tbody>
 </table>
 <dl class="footnote brackets">
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
 <dd><p>행정 구역 코드는 별도로 안내.</p>
 </dd>
 </dl>
