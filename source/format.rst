@@ -3,14 +3,15 @@
 
 .. rst-class:: table-width-fix
 
-.. _message_formats:
+.. _messageformats:
 
 RUUT의 메세지는 크게 3가지로 구분됩니다. 
+
 * Segment : Segment 기반의 실시간 교통 정보 메시지
 * Incident : Segment 기반의 이벤트 (사고/공사 등) 정보 메시지
 * TPEG : TPEG2 TFP/TEC/WEA 어플리케이션 Binary 또는 TPEG-ML 메시지
 
-.. _segment_formats:
+.. _segmentformats:
 
 Segment
 ----------------
@@ -45,7 +46,7 @@ RUUT 를 구성하는 가장 기본 구성 단위이기 때문에 Segment 를 en
 
 Incident
 ---------------------
-Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등의 정보를 다룹니다. 나머지 내용은 :ref:`Segment 포맷 <segment_formats>`과 동일 합니다.
+Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등의 정보를 다룹니다. 나머지 내용은 :ref:`Segment 포맷 <segmentformats>` 과 동일 합니다.
 
 **Incident 메시지 응답**
 

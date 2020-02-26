@@ -396,11 +396,39 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 V2X 서비스 연동 요청 
 --------------------------
 
-작성 중
+Webhook URL 등록 작업
+''''''''''''''''''''''''''
 
+예측 교통 정보를 획득 하려면 원하는 V2X 서비스의 유형과 webhook 이 인입될 URL을 입력하여야 합니다.
+
+:underline:`예) 응급 차량 출동 알림 V2X 서비스를 https://myserverurl.net 에서 수신하기를 요청`
+
+* Header 에 사용자 인증 정보 포함
+* Webhook 연동할 서비스명 설정
+* Webhook 인입될 URL 명시 (unreachable 상태가 지속될 경우 무통보 삭제합니다)
+
+:underline:`Request Example`
+
+.. code-block:: json
+
+   POST root/v1/hooks
+   header : X-Authorization
+   
+   Body : 
+   {
+     "url":"https://myserverurl.net",
+     "locationReference":"openLR",
+     "events": [
+       "emergencyVehicle"
+     ]
+   }
+
+Incoming Webhook
+''''''''''''''''''''''''''
+세부 정보는 :ref:`V2X 서비스 Incoming Webhook 명세 <v2xincoming>` 을 참고하시기 바랍니다.
 
 과거 교통 정보 요청
 --------------------------
 
-작성 중
+과거 교통 정보 획득을 위해서는 관리자에게 직접 문의 주시기 바랍니다.
 

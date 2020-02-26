@@ -103,7 +103,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id11">3.2.3. 돌발 정보 (이벤트, 사고)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v2x">3.3. V2X 서비스 연동 요청</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v2x">3.3. V2X 서비스 연동 요청</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#webhook-url">3.3.1. Webhook URL 등록 작업</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incoming-webhook">3.3.2. Incoming Webhook</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#id12">3.4. 과거 교통 정보 요청</a></li>
 </ul>
 </li>
@@ -682,11 +686,38 @@ ruut/v1/segments?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10
 </div>
 <div class="section" id="v2x">
 <h2>3.3. V2X 서비스 연동 요청<a class="headerlink" href="#v2x" title="Permalink to this headline">¶</a></h2>
-<p>작성 중</p>
+<div class="section" id="webhook-url">
+<h3>3.3.1. Webhook URL 등록 작업<a class="headerlink" href="#webhook-url" title="Permalink to this headline">¶</a></h3>
+<p>예측 교통 정보를 획득 하려면 원하는 V2X 서비스의 유형과 webhook 이 인입될 URL을 입력하여야 합니다.</p>
+<p><span class="underline">예) 응급 차량 출동 알림 V2X 서비스를 https://myserverurl.net 에서 수신하기를 요청</span></p>
+<ul class="simple">
+<li><p>Header 에 사용자 인증 정보 포함</p></li>
+<li><p>Webhook 연동할 서비스명 설정</p></li>
+<li><p>Webhook 인입될 URL 명시 (unreachable 상태가 지속될 경우 무통보 삭제합니다)</p></li>
+</ul>
+<p><span class="underline">Request Example</span></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>POST root/v1/hooks
+header : X-Authorization
+
+Body :
+{
+  &quot;url&quot;:&quot;https://myserverurl.net&quot;,
+  &quot;locationReference&quot;:&quot;openLR&quot;,
+  &quot;events&quot;: [
+    &quot;emergencyVehicle&quot;
+  ]
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="incoming-webhook">
+<h3>3.3.2. Incoming Webhook<a class="headerlink" href="#incoming-webhook" title="Permalink to this headline">¶</a></h3>
+<p>세부 정보는 <a class="reference internal" href="api.html#v2xincoming"><span class="std std-ref">V2X 서비스 Incoming Webhook 명세</span></a> 을 참고하시기 바랍니다.</p>
+</div>
 </div>
 <div class="section" id="id12">
 <h2>3.4. 과거 교통 정보 요청<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>작성 중</p>
+<p>과거 교통 정보 획득을 위해서는 관리자에게 직접 문의 주시기 바랍니다.</p>
 </div>
 </div>
 
