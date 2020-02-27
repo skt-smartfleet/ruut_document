@@ -675,11 +675,6 @@ Request/Response Example
         </ApplicationRootMessageML>
     </ApplicationRootMessage>
 
-Auxiliary
---------------------------
-History
-''''''''''''''''''''''''''
-
 Errors
 --------------------------
 RUUT API 호출 중 발생하는 에러 코드에 대한 안내
