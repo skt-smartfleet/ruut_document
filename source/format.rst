@@ -33,7 +33,17 @@ RUUT 를 구성하는 가장 기본 구성 단위이기 때문에 Segment 를 en
         "travelTime": "estimated time to traverse the segment",
         "openLR": "openLR code of the segment",
         "agoraC": "AGORA-C code of the segment",
-        "gps-coordinates": "gps coordinates of the start/end node of the segment",
+        "linkId": "T maplink ID of the matcing segment",
+        "segmentCoordinates": {
+          "point1": {
+            "lat": "GPS latitude of the node of the segment",
+            "lon": "GPS longitude of the node of the segment"
+          },
+          "point2": {
+            "lat": "GPS latitude of the node of the segment",
+            "lon": "GPS longitude of the node of the segment"
+          }
+        },
         "confidenceLevel": "Level of confidence of the traffic prediction (prediction only)",       
         "lane": [{
           "laneNumber": "Lane number",
@@ -73,6 +83,17 @@ Incident 는 도로 위 이벤트 정보 즉, 사고, 재해, 공사, 행사 등
        },
       "openLR": "openLR code of the segment",
       "agoraC": "AGORA-C code of the segment",
+      "linkId": "T maplink ID of the matcing segment",
+      "segmentCoordinates": {
+        "point1": {
+          "lat": "GPS latitude of the node of the segment",
+          "lon": "GPS longitude of the node of the segment"
+        },
+        "point2": {
+          "lat": "GPS latitude of the node of the segment",
+          "lon": "GPS longitude of the node of the segment"
+        }
+      },
       "timeStamp": "timestamp of the information"
     }]
   }
