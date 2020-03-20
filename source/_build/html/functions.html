@@ -90,15 +90,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. 주요 기능</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">2.1. 실시간 및 예측 교통 정보 제공</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rtti">2.1.1. 실시간 교통 정보 (RTTI)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fti">2.1.2. 예측 교통 정보 (FTI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fti">2.1.2. 예측 교통 정보 (FTI, 서비스 예정)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geospatial-query">2.1.3. Geospatial Query</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ruut-api-tpeg2">2.2. RUUT API 응답 및 TPEG2 메시지 제공</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rna-road-network-analysis">2.3. RNA (Road Network Analysis, 서비스 예정)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v2x">2.4. V2X 서비스</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#map-agnostic-location-referencing">2.5. Map Agnostic Location Referencing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">2.6. 차선 단위 교통 정보 제공</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v2x">2.3. V2X 서비스</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#map-agnostic-location-referencing">2.4. Map Agnostic Location Referencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2.5. 차선 단위 교통 정보 제공</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna-road-network-analysis">2.6. RNA (Road Network Analysis, 서비스 예정)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="skt.html">3. RUUT 서비스 가이드</a></li>
@@ -189,7 +189,7 @@
 <p>실시간 교통 정보는 도로 상태 정보 및 이벤트 정보로 이루어져 있습니다. 각각의 도로 세그먼트에 대해서 국내 최대의 검증 데이터를 기반으로 실시간의 세그먼트 주행 속도, 평균 이동 시간, 속도 제한 값, 사고 정보, 공사 정보, 행사 정보(일정) 등을 제공함으로써 고품질의 모빌리티 서비스 개발에 활용할 수 있습니다.</p>
 </div>
 <div class="section" id="fti">
-<h3>2.1.2. 예측 교통 정보 (FTI)<a class="headerlink" href="#fti" title="Permalink to this headline">¶</a></h3>
+<h3>2.1.2. 예측 교통 정보 (FTI, 서비스 예정)<a class="headerlink" href="#fti" title="Permalink to this headline">¶</a></h3>
 <p>T Map 의 방대한 데이터를 기반으로 현재 시간 기준 1시간 이후의 미래 시점에 대한 예측 교통 정보를 제공합니다. 예측 교통 정보는 머신 러닝 기반으로 학습된 데이터를 토대로 명시된 시간에서 도로 세그먼트의 차량 예상 주행 속도를 제공합니다.</p>
 <img alt="_images/ruut_prediction.png" src="_images/ruut_prediction.png" />
 </div>
@@ -209,22 +209,14 @@
 </div>
 <div class="section" id="ruut-api-tpeg2">
 <h2>2.2. RUUT API 응답 및 TPEG2 메시지 제공<a class="headerlink" href="#ruut-api-tpeg2" title="Permalink to this headline">¶</a></h2>
-<p>도로 세그먼트에 대한 정보 요청에 대하여 2가지 응답 규격을 제공합니다. RUUT API 는 JSON 형태의 상세 교통 정보를 SKT 독자 규격에 따라 응답합니다. TEPG2 메시지는 ISO 표준에 따라 TFP/TEC/WEA 3가지 어플리케이션 메시지를 제공합니다. 각 응답 규격의 상세 정보는 <a class="reference internal" href="format.html#segment-formats"><span class="std std-ref">RUUT 응답규격</span></a> 과 <a class="reference internal" href="format.html#tpeg2-formats"><span class="std std-ref">TPEG2 메시지 상세</span></a> 을 참조하시기 바랍니다.</p>
-</div>
-<div class="section" id="rna-road-network-analysis">
-<h2>2.3. RNA (Road Network Analysis, 서비스 예정)<a class="headerlink" href="#rna-road-network-analysis" title="Permalink to this headline">¶</a></h2>
-<p>도로를 구성하는 객체에 따른 스코어링을 통해 안전한 운행 환경을 조성할 수 있도록 RNA, 도로 네트워크 분석 정보를 제공합니다. RNA 는 아래 항목에 대한 스코어링으로 구성되어 있습니다.</p>
-<ul class="simple">
-<li><p>도로 링크 위험도 스코어링 - 도로 세그먼트의 위험요소를 분석하여 수치화 합니다.</p></li>
-<li><p>운전자 운행 습관 스코어링 - 일반적인 운전자 행태 안전도를 분석하여 수치화 합니다.</p></li>
-</ul>
+<p>도로 세그먼트에 대한 정보 요청에 대하여 2가지 응답 규격을 제공합니다. RUUT API 는 JSON 형태의 상세 교통 정보를 SKT 독자 규격에 따라 응답합니다. TEPG2 메시지는 ISO 표준에 따라 TFP/TEC/WEA 3가지 어플리케이션 메시지를 제공합니다. 각 응답 규격의 상세 정보는 <span class="xref std std-ref">RUUT 응답규격</span> 과 <a class="reference internal" href="format.html#tpeg2-formats"><span class="std std-ref">TPEG2 메시지 상세</span></a> 을 참조하시기 바랍니다.</p>
 </div>
 <div class="section" id="v2x">
-<h2>2.4. V2X 서비스<a class="headerlink" href="#v2x" title="Permalink to this headline">¶</a></h2>
+<h2>2.3. V2X 서비스<a class="headerlink" href="#v2x" title="Permalink to this headline">¶</a></h2>
 <p>T Map 을 통해 서비스 되고 있는 응급차량 접근 알림, 전방 급정거 알림 등의 SKT V2X 서비스를 도메인 무관하게 활용하실 수 있도록 V2X 서비스를 제공합니다. 간단한 API 호출을 통하여 능동적으로 T Map 에 제공되고 있는 것과 동일한 V2X 원시 데이터를 제공받을 수 있습니다. V2X 서비스의 세부 사용 방법은 <a class="reference internal" href="api.html#v2x-apidoc"><span class="std std-ref">V2X API 호출규격</span></a> 을 참고하시기 바랍니다.</p>
 </div>
 <div class="section" id="map-agnostic-location-referencing">
-<h2>2.5. Map Agnostic Location Referencing<a class="headerlink" href="#map-agnostic-location-referencing" title="Permalink to this headline">¶</a></h2>
+<h2>2.4. Map Agnostic Location Referencing<a class="headerlink" href="#map-agnostic-location-referencing" title="Permalink to this headline">¶</a></h2>
 <p>위치 정보에 대해서는 GPS 좌표계를 이용하여 공통의 인터페이스를 확보할 수 있으나 지도를 표현하는 방식에 있어서는 공급 주체에 따라 다른 형태가 제공되는 경우가 있습니다. 일례로 국내 도로 위치 참조 표준으로 사용되는 ITS표준노드링크(KS Link)가 있음에도 국내외 민간 기업은 별도의 규격을 정의해서 사용 합니다.</p>
 <img alt="_images/lr.png" src="_images/lr.png" />
 <p>각기 다른 위치 참조 규격 지원 및 맵DB 갱신 관리에 따르는 불편과 자원 낭비를 최소화 하고 호환성을 높이기 위해서 RUUT는 맵 규격에 독립적인 동적 위치 참조 규격을 지원합니다. 이는 별도 맵DB 없이 정해진 scheme 에 따라 인코딩 하여 정보를 전달하고 해당 정보를 다시 디코딩 한 후 사용 주체의 지도에 맵핑하여 사용하게 됩니다. RUUT는 국내외에서 가장 많이 사용되고 있는 AGORA-C 와 openLR 규격을 지원합니다.</p>
@@ -234,9 +226,17 @@
 <p>openLR 은 세계적인 네비게이션/지도 서비스 업체인 TomTom 에서 개발한 동적 위치 참조 규격입니다. openLR 은 AGORA-C 와 달리 별도 라이센스 비용이 없는 공개 표준 입니다. 그런 이유로 많은 다국적 기업에서 별도 비용을 지불하지 않는 openLR 에 대한 파트너십을 강화하고 있는 추세입니다.</p>
 </div>
 <div class="section" id="id3">
-<h2>2.6. 차선 단위 교통 정보 제공<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>2.5. 차선 단위 교통 정보 제공<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>RUUT 는 도로 특정 영역에 대하여 차선 단위 교통 정보를 제공합니다. 2차선 이상의 도로에서 도로 가장 안쪽 차선 또는 가장 바깥쪽 차선 중 회전 구간과 연결되는 차선에 한하여 회전 구간 이후의 실시간 교통 정보를 반영하여 보정된 차선 단위 교통 정보(주행 속도)를 제공할 수 있습니다.</p>
 <img alt="_images/lane.png" src="_images/lane.png" />
+</div>
+<div class="section" id="rna-road-network-analysis">
+<h2>2.6. RNA (Road Network Analysis, 서비스 예정)<a class="headerlink" href="#rna-road-network-analysis" title="Permalink to this headline">¶</a></h2>
+<p>도로를 구성하는 객체에 따른 스코어링을 통해 안전한 운행 환경을 조성할 수 있도록 RNA, 도로 네트워크 분석 정보를 제공합니다. RNA 는 아래 항목에 대한 스코어링으로 구성되어 있습니다.</p>
+<ul class="simple">
+<li><p>도로 링크 위험도 스코어링 - 도로 세그먼트의 위험요소를 분석하여 수치화 합니다.</p></li>
+<li><p>운전자 운행 습관 스코어링 - 일반적인 운전자 행태 안전도를 분석하여 수치화 합니다.</p></li>
+</ul>
 </div>
 </div>
 
