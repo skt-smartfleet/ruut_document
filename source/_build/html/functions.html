@@ -97,8 +97,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#ruut-api-tpeg2">2.2. RUUT API 응답 및 TPEG2 메시지 제공</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v2x">2.3. V2X 서비스</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#map-agnostic-location-referencing">2.4. Map Agnostic Location Referencing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">2.5. 차선 단위 교통 정보 제공</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rna-road-network-analysis">2.6. RNA (Road Network Analysis, 서비스 예정)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rna-road-network-analysis">2.5. RNA (Road Network Analysis, 서비스 예정)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2.6. 차선 단위 교통 정보 제공 (비공개 서비스)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="skt.html">3. RUUT 서비스 가이드</a></li>
@@ -176,10 +176,10 @@
 <ul class="simple">
 <li><p>실시간 및 예측 교통 정보 제공</p></li>
 <li><p>RUUT 고유 API 와 TPEG2 메시지 응답</p></li>
-<li><p>도로 위험도 및 운전자 평가 점수 제공</p></li>
 <li><p>V2X 서비스 Enabling</p></li>
 <li><p>지도 비 의존적인 위치 참조 규격 제공</p></li>
-<li><p>차선 단위 교통 정보 제공 (일부)</p></li>
+<li><p>(서비스 예정) 도로 위험도 및 운전자 평가 점수 제공</p></li>
+<li><p>(비공개 서비스) 차선 단위 교통 정보 제공</p></li>
 </ul>
 <div class="section" id="id2">
 <h2>2.1. 실시간 및 예측 교통 정보 제공<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -225,18 +225,18 @@
 <p><strong>openLR</strong></p>
 <p>openLR 은 세계적인 네비게이션/지도 서비스 업체인 TomTom 에서 개발한 동적 위치 참조 규격입니다. openLR 은 AGORA-C 와 달리 별도 라이센스 비용이 없는 공개 표준 입니다. 그런 이유로 많은 다국적 기업에서 별도 비용을 지불하지 않는 openLR 에 대한 파트너십을 강화하고 있는 추세입니다.</p>
 </div>
-<div class="section" id="id3">
-<h2>2.5. 차선 단위 교통 정보 제공<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>RUUT 는 도로 특정 영역에 대하여 차선 단위 교통 정보를 제공합니다. 2차선 이상의 도로에서 도로 가장 안쪽 차선 또는 가장 바깥쪽 차선 중 회전 구간과 연결되는 차선에 한하여 회전 구간 이후의 실시간 교통 정보를 반영하여 보정된 차선 단위 교통 정보(주행 속도)를 제공할 수 있습니다.</p>
-<img alt="_images/lane.png" src="_images/lane.png" />
-</div>
 <div class="section" id="rna-road-network-analysis">
-<h2>2.6. RNA (Road Network Analysis, 서비스 예정)<a class="headerlink" href="#rna-road-network-analysis" title="Permalink to this headline">¶</a></h2>
+<h2>2.5. RNA (Road Network Analysis, 서비스 예정)<a class="headerlink" href="#rna-road-network-analysis" title="Permalink to this headline">¶</a></h2>
 <p>도로를 구성하는 객체에 따른 스코어링을 통해 안전한 운행 환경을 조성할 수 있도록 RNA, 도로 네트워크 분석 정보를 제공합니다. RNA 는 아래 항목에 대한 스코어링으로 구성되어 있습니다.</p>
 <ul class="simple">
 <li><p>도로 링크 위험도 스코어링 - 도로 세그먼트의 위험요소를 분석하여 수치화 합니다.</p></li>
 <li><p>운전자 운행 습관 스코어링 - 일반적인 운전자 행태 안전도를 분석하여 수치화 합니다.</p></li>
 </ul>
+</div>
+<div class="section" id="id3">
+<h2>2.6. 차선 단위 교통 정보 제공 (비공개 서비스)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>RUUT 는 도로 특정 영역에 대하여 차선 단위 교통 정보를 제공합니다. 2차선 이상의 도로에서 도로 가장 안쪽 차선 또는 가장 바깥쪽 차선 중 회전 구간과 연결되는 차선에 한하여 회전 구간 이후의 실시간 교통 정보를 반영하여 보정된 차선 단위 교통 정보(주행 속도)를 제공할 수 있습니다. 해당 기능은 별도로 인증된 사용자에 한하여 제공 가능하며 인증 방법 등의 세부 내용은 관리자 메일로 문의하여 주시기 바랍니다.</p>
+<img alt="_images/lane.png" src="_images/lane.png" />
 </div>
 </div>
 

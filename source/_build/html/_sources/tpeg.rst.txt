@@ -31,7 +31,7 @@ RUUT는 TPEG2 표준을 기반으로 3개의 TPEG applications 을 제공합니�
 * tpegMl : TPEG 표준에서 정의한 xsd 에 따른 xml 응답
 
 TFP (교통 정보)
-''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''
 
 TFP는 Traffic Flow and Predictions 의 약어로 실시간 교통 정보 및 예측 교통 정보를 제공하는 어플리케이션 입니다. 
 TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.
@@ -45,7 +45,31 @@ TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 .. code-block:: none
 
   // 원형 geo filter, TFP application 표출, TPEG ML 형태로 응답
-  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619, 127.112465&radius=10&app=tec&format=tpegMl
+  ruut/v1/tpeg/getMessage?geoFilter=circle&center=37.397619,127.112465&radius=1&app=tfp&format=tpegMl
+
+:underline:`Request Example`
+
+.. code-block:: none
+
+  
+  <tfp:method xsi:type="tfp:FlowStatus">
+    <tfp:startTime>1970-01-01T00: 00: 00Z</tfp:startTime>
+    <tfp:duration>0</tfp:duration>
+    <tfp:status>
+      <tfp:LOS tfp:code="0" tfp:table="tfp003_LevelOfService"/>
+      <tfp:averageSpeed>51</tfp:averageSpeed>
+      <tfp:freeFlowTravelTime>70</tfp:freeFlowTravelTime>
+    </tfp:status>
+    <tfp:restriction>
+      <tfp:lanes tfp:code="0" tfp:table="tfp005_laneRestriction"/>
+    </tfp:restriction>
+      <tfp:cause tfp:code="0" tfp:table="tfp006_CauseCode"/>
+    <tfp:detailedCause>
+      <tfp:messageID>0</tfp:messageID>
+      <tfp:COID>0</tfp:COID>
+    </tfp:detailedCause>
+  </tfp:method>
+  ...
 
 
 TEC (사고/이벤트 정보)

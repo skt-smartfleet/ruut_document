@@ -99,8 +99,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ruut-api">3.2. RUUT 고유 API 활용</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id9">3.2.1. 실시간 교통 정보</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.2. 예측 교통 정보</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.3. 돌발 정보 (이벤트, 사고)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.2. 돌발 정보 (이벤트, 사고)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v2x">3.3. V2X 서비스 연동 요청</a><ul>
@@ -108,7 +107,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#incoming-webhook">3.3.2. Incoming Webhook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">3.4. 도로 위험 점수 획득</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">3.4. 도로 위험 점수 획득</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.4.1. 예측 교통 정보</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">3.5. 과거 교통 정보 요청</a></li>
 </ul>
 </li>
@@ -641,46 +643,96 @@
 <div class="section" id="id9">
 <h3>3.2.1. 실시간 교통 정보<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>실시간 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위이 참조 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
 <li><p>획득 하고자 하는 정보의 유형 및 카테고리 선택 (<cite>rttiField</cite>, <cite>lane</cite>)</p></li>
 <li><p>위치 참조 방식 선택 (<cite>lr</cite>)</p></li>
 </ul>
 <p><span class="underline">Request Example</span></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, 모든 교통 정보 표출, 위치 참조 모두 표출, 차선 단위 정보 배제
-ruut/v1/segments?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;rttiField=all
-&amp;lr=all&amp;lane=off
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter 반경 1km, 모든 교통 정보 표출, 위치 참조 openLr
+ruut/v1/segments?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;incidentField=all
+&amp;lr=openLr
+</pre></div>
+</div>
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  &quot;segments&quot;: [
+      {
+          &quot;segmentId&quot;: &quot;1020245101&quot;,
+          &quot;roadCategory&quot;: &quot;1&quot;,
+          &quot;speed&quot;: &quot;27&quot;,
+          &quot;limit&quot;: &quot;70&quot;,
+          &quot;freeFlow&quot;: &quot;70&quot;,
+          &quot;travelTime&quot;: &quot;43&quot;,
+          &quot;openLr&quot;: &quot;C1pllBqXeQ4wBf/X/tQOEQ==&quot;,
+          &quot;linkId&quot;: &quot;10202451&quot;,
+          &quot;segmentCoordinates&quot;: {
+              &quot;point1&quot;: {
+                  &quot;lat&quot;: &quot;37.394568&quot;,
+                  &quot;lon&quot;: &quot;127.120485&quot;
+              },
+              &quot;point2&quot;: {
+                  &quot;lat&quot;: &quot;37.391561&quot;,
+                  &quot;lon&quot;: &quot;127.120067&quot;
+              }
+          },
+          &quot;timeStamp&quot;: &quot;2020-03-03 13:19:00&quot;
+      },
+      ...
 </pre></div>
 </div>
 </div>
 <div class="section" id="id10">
-<h3>3.2.2. 예측 교통 정보<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>예측 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
-<p><span class="underline">예) 09:00 부터 1시간 동안의 예측 데이터를 20분 단위로 요청 (09:00, 09:20, 09:40 분 예측 데이터 반환)</span></p>
-<ul class="simple">
-<li><p>실시간 교통 정보 획득 정보 포함</p></li>
-<li><p>예측 시작 시점 (<cite>start_time</cite>: 20200101090000)</p></li>
-<li><p>얼마나 오래 데이터를 추출 해야 하는지 (<cite>duration</cite>: 60)</p></li>
-<li><p>몇 분 간격으로 데이터를 추출 해야 하는지 (<cite>interval</cite>: 20)</p></li>
-</ul>
-<p><span class="underline">Request Example</span></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ruut/v1/segments?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;rttiField=all
-&amp;regionId=0&amp;lr=all&amp;start_time=20200101090000&amp;duration=60&amp;interval=20
-</pre></div>
-</div>
-</div>
-<div class="section" id="id11">
-<h3>3.2.3. 돌발 정보 (이벤트, 사고)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.2. 돌발 정보 (이벤트, 사고)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>돌발 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
-<p><span class="underline">예) 모든 돌발 정보를 1번 도로 레벨에 한하여 모든 위치 참조 포맷으로 요청</span></p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위이 참조 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 돌발 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
 <li><p>획득 하고자 하는 정보의 유형 및 카테고리 선택 (<cite>incidentField</cite>, <cite>type</cite>)</p></li>
 <li><p>위치 참조 방식 선택 (<cite>lr</cite>)</p></li>
 </ul>
 <p><span class="underline">Request Example</span></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ruut/v1/incidents?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=100&amp;frc=1
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ruut/v1/incidents?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1
 &amp;incidentField=all&amp;type=all&amp;lr=all
+</pre></div>
+</div>
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+  &quot;incidents&quot;: [
+      {
+          &quot;segmentId&quot;: &quot;209699101&quot;,
+          &quot;incidentId&quot;: &quot;L93105264991&quot;,
+          &quot;incidentType&quot;: &quot;B&quot;,
+          &quot;lane&quot;: &quot;00&quot;,
+          &quot;length&quot;: 83,
+          &quot;vehicleKind&quot;: &quot;000000&quot;,
+          &quot;description&quot;: &quot;&lt;경찰청제공&gt;[공사] 세계로 삼평중삼거리 에서 사송사거리 방향 1차로 도로공사 주의운전&quot;,
+          &quot;schedule&quot;: {
+              &quot;isPlanned&quot;: &quot;&quot;,
+              &quot;startTime&quot;: &quot;202003030806&quot;,
+              &quot;endTime&quot;: &quot;202003031800&quot;,
+              &quot;reoccuring&quot;: {
+                  &quot;daysOfWeek&quot;: &quot;&quot;,
+                  &quot;from&quot;: &quot;&quot;,
+                  &quot;until&quot;: &quot;&quot;
+              }
+          },
+          &quot;openLr&quot;: &quot;C1pk5xqYcSugCP/FAb0rHA==&quot;,
+          &quot;linkId&quot;: &quot;2096991&quot;,
+          &quot;segmentCoordinates&quot;: {
+              &quot;point1&quot;: {
+                  &quot;lat&quot;: &quot;37.399888&quot;,
+                  &quot;lon&quot;: &quot;127.116777&quot;
+              },
+              &quot;point2&quot;: {
+                  &quot;lat&quot;: &quot;37.404339&quot;,
+                  &quot;lon&quot;: &quot;127.11618&quot;
+              }
+          },
+          &quot;timeStamp&quot;: &quot;2020-03-03 13:15:00&quot;
+      },
+      ...
 </pre></div>
 </div>
 </div>
@@ -716,9 +768,13 @@ Body :
 <p>세부 정보는 <a class="reference internal" href="api.html#v2xincoming"><span class="std std-ref">V2X 서비스 Incoming Webhook 명세</span></a> 을 참고하시기 바랍니다.</p>
 </div>
 </div>
-<div class="section" id="id12">
-<h2>3.4. 도로 위험 점수 획득<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>3.4. 도로 위험 점수 획득<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>‘20년 2분기 제공 예정</p>
+<div class="section" id="id12">
+<h3>3.4.1. 예측 교통 정보<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>제공 예정 (일정 미정)</p>
+</div>
 </div>
 <div class="section" id="id13">
 <h2>3.5. 과거 교통 정보 요청<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>

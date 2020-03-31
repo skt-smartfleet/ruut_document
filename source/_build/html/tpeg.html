@@ -95,7 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#tfp">4.2.1. TFP (교통 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tec">4.2.2. TEC (사고/이벤트 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wea">4.2.3. WEA (날씨 정보)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">4.2.4. TPEG 어플리케이션 조합</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">4.2.4. TPEG 어플리케이션 조합</a></li>
 </ul>
 </li>
 </ul>
@@ -219,9 +219,30 @@ TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 <li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p><a href="#id2"><span class="problematic" id="id3">:underline:`Request Example`</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TFP application 표출, TPEG ML 형태로 응답
-ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=tec&amp;format=tpegMl
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;app=tfp&amp;format=tpegMl
+</pre></div>
+</div>
+<p><a href="#id4"><span class="problematic" id="id5">:underline:`Request Example`</span></a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;tfp:method xsi:type=&quot;tfp:FlowStatus&quot;&gt;
+  &lt;tfp:startTime&gt;1970-01-01T00: 00: 00Z&lt;/tfp:startTime&gt;
+  &lt;tfp:duration&gt;0&lt;/tfp:duration&gt;
+  &lt;tfp:status&gt;
+    &lt;tfp:LOS tfp:code=&quot;0&quot; tfp:table=&quot;tfp003_LevelOfService&quot;/&gt;
+    &lt;tfp:averageSpeed&gt;51&lt;/tfp:averageSpeed&gt;
+    &lt;tfp:freeFlowTravelTime&gt;70&lt;/tfp:freeFlowTravelTime&gt;
+  &lt;/tfp:status&gt;
+  &lt;tfp:restriction&gt;
+    &lt;tfp:lanes tfp:code=&quot;0&quot; tfp:table=&quot;tfp005_laneRestriction&quot;/&gt;
+  &lt;/tfp:restriction&gt;
+    &lt;tfp:cause tfp:code=&quot;0&quot; tfp:table=&quot;tfp006_CauseCode&quot;/&gt;
+  &lt;tfp:detailedCause&gt;
+    &lt;tfp:messageID&gt;0&lt;/tfp:messageID&gt;
+    &lt;tfp:COID&gt;0&lt;/tfp:COID&gt;
+  &lt;/tfp:detailedCause&gt;
+&lt;/tfp:method&gt;
+...
 </pre></div>
 </div>
 </div>
@@ -234,7 +255,7 @@ TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 <li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p><a href="#id6"><span class="problematic" id="id7">:underline:`Request Example`</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TEC application 표출, TPEG ML 형태로 응답
 ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=tfp&amp;format=tpegMl
 </pre></div>
@@ -249,21 +270,21 @@ WEA 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 <li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p><a href="#id8"><span class="problematic" id="id9">:underline:`Request Example`</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA application 표출, TPEG ML 형태로 응답
 ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea&amp;format=tpegMl
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>4.2.4. TPEG 어플리케이션 조합<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>4.2.4. TPEG 어플리케이션 조합<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>위에서 설명한 TPEG 어플리케이션은 사용자 편의에 따라 조합하여 요청할 수 있습니다. 하나 이상의 어플리케이션 정보를 확인하려면 아래 항목을 검토 작성하셔야 합니다.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
 <li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>). (쉼표 ‘,’) 를 통해 구분하여 여러 어플리케이션 조합 요청 가능</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p><a href="#id11"><span class="problematic" id="id12">:underline:`Request Example`</span></a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA, TFP application 표출, TPEG ML 형태로 응답
 ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea,tfp&amp;format=tpegMl
 </pre></div>

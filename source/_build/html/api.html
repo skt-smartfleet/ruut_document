@@ -503,11 +503,11 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>segmentid</p></td>
+<tr class="row-even"><td><p>segmentId</p></td>
 <td><p>String</p></td>
 <td><p>세그먼트의 ID</p></td>
 </tr>
-<tr class="row-odd"><td><p>roadcate</p></td>
+<tr class="row-odd"><td><p>roadCategory</p></td>
 <td><p>String</p></td>
 <td><p>세그먼트의 도로 레벨</p></td>
 </tr>
@@ -692,10 +692,10 @@
 <h4>6.2.2.1. Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
+<col style="width: 19%" />
+<col style="width: 9%" />
 <col style="width: 17%" />
-<col style="width: 8%" />
-<col style="width: 15%" />
-<col style="width: 61%" />
+<col style="width: 55%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Params</p></th>
@@ -707,65 +707,50 @@
 <tbody>
 <tr class="row-even"><td><p>incidentField</p></td>
 <td><p>String</p></td>
-<td><p>severity</p></td>
-<td><p>이벤트 심각도 (제공 예정) 반환</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p>impacting</p></td>
-<td><p>이벤트가 세그먼트의 교통 흐름에 영향을 미치는지 여부 (제공 예정) 반환</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p>status</p></td>
-<td><p>이벤트의 지속 상태 반환</p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
 <td><p>lane</p></td>
 <td><p>이벤트 발생 차선 정보 반환</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p>length</p></td>
 <td><p>이벤트가 영향을 미치는 물리적 범위 (미터) 반환</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td><p></p></td>
 <td><p>vehicleKind</p></td>
 <td><p>이벤트 차량 종류 반환</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p>description</p></td>
 <td><p>이벤트 세부 정보 문자열 반환</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td><p></p></td>
 <td><p>all(default)</p></td>
 <td><p>모든 필드 반환</p></td>
 </tr>
-<tr class="row-even"><td><p>lr</p></td>
+<tr class="row-odd"><td><p>lr</p></td>
 <td><p>String</p></td>
 <td><p>openlr</p></td>
 <td><p>위치 참조 정보로 openLR 인코딩 정보 반환</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td><p></p></td>
 <td><p>agorac</p></td>
 <td><p>위치 참조 정보로 AGORA-C 인코딩 정보 반환</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p>all (default)</p></td>
 <td><p>위치 참조 정보로 openLR / AGORA-C 인코딩 정보 반환</p></td>
 </tr>
-<tr class="row-odd"><td><p>segmentCoordinates</p></td>
+<tr class="row-even"><td><p>segmentCoordinates</p></td>
 <td><p>String</p></td>
 <td><p>on (default)</p></td>
 <td><p>제공 세그먼트의 시작/끝 노드의 GPS 좌표 정보 반환</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
 <td><p>off</p></td>
 <td><p>세그먼트 GPS 정보 반환 않음</p></td>
@@ -804,73 +789,58 @@
 <td><p>String</p></td>
 <td><p>이벤트의 타입 (A:사고, B:공사, C:행사, D:재해, E:통제)</p></td>
 </tr>
-<tr class="row-odd"><td><p>severity</p></td>
-<td><p>Integer</p></td>
-<td><p>이벤트의 심각도 (제공 예정)</p></td>
-</tr>
-<tr class="row-even"><td><p>impacting</p></td>
-<td><p>Integer</p></td>
-<td><p>이벤트가 주변 교통에 영향을 끼치는 정도 (제공 예정)</p></td>
-</tr>
-<tr class="row-odd"><td><p>status</p></td>
-<td><p>Integer</p></td>
-<td><p>이벤트 진행 상태</p></td>
-</tr>
-<tr class="row-even"><td><p>lane</p></td>
+<tr class="row-odd"><td><p>lane</p></td>
 <td><p>Integer</p></td>
 <td><p>이벤트 발생 차선 정보</p></td>
 </tr>
-<tr class="row-odd"><td><p>vehicleKind</p></td>
+<tr class="row-even"><td><p>vehicleKind</p></td>
 <td><p>String</p></td>
 <td><p>사고 차량 종류</p></td>
 </tr>
-<tr class="row-even"><td><p>description</p></td>
+<tr class="row-odd"><td><p>description</p></td>
 <td><p>String</p></td>
 <td><p>이벤트 세부 정보 설명 문자열</p></td>
 </tr>
-<tr class="row-odd"><td><p>schedule</p></td>
+<tr class="row-even"><td><p>schedule</p></td>
 <td><p>Object</p></td>
 <td><p>이벤트에 일정에 있을 때 제공되는 오브젝트 (이벤트 일정이 있는 경우에만 기본 제공)</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><p>isPlanned</p></li>
 </ul>
 </td>
 <td><p>String</p></td>
 <td><p>계획된 이벤트인지 여부</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><p>startTime</p></li>
 </ul>
 </td>
 <td><p>Datetime</p></td>
 <td><p>이벤트 개시 시점</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><p>endTime</p></li>
 </ul>
 </td>
 <td><p>Datetime</p></td>
 <td><p>이벤트 종료 시점</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><p>reoccuring</p></li>
 </ul>
 </td>
 <td><p>Object</p></td>
 <td><p>반복 이벤트인지 여부에 따라 제공되는 오브젝트</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
-<li><ul>
+<tr class="row-odd"><td><ul class="simple">
 <li><p>daysOfWeek</p></li>
-</ul>
-</li>
 </ul>
 </td>
 <td><p>String</p></td>
 <td><p>일주일 중 언제 반복 발생하는지</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><ul>
 <li><p>from</p></li>
 </ul>
@@ -880,7 +850,7 @@
 <td><p>String</p></td>
 <td><p>반복 이벤트 시작 시점</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><ul>
 <li><p>until</p></li>
 </ul>
@@ -890,26 +860,26 @@
 <td><p>String</p></td>
 <td><p>반복 이벤트 종료 시점</p></td>
 </tr>
-<tr class="row-odd"><td><p>openLR</p></td>
+<tr class="row-even"><td><p>openLR</p></td>
 <td><p>String</p></td>
 <td><p>위치 참조를 위한 openLR encoded code</p></td>
 </tr>
-<tr class="row-even"><td><p>agoraC</p></td>
+<tr class="row-odd"><td><p>agoraC</p></td>
 <td><p>String</p></td>
 <td><p>위치 참조를 위한 AGORA-C encoded code</p></td>
 </tr>
-<tr class="row-odd"><td><p>segmentCoordinates</p></td>
+<tr class="row-even"><td><p>segmentCoordinates</p></td>
 <td><p>Object</p></td>
 <td><p>segment nodes 에 대한 GPS 좌표 제공 (양 끝 노드)</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><p>point1</p></li>
 </ul>
 </td>
 <td><p>Object</p></td>
 <td><p>node 1 에 대한 GPS 좌표 컨테이너</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><ul>
 <li><p>lat</p></li>
 </ul>
@@ -919,7 +889,7 @@
 <td><p>String</p></td>
 <td><p>node 1 에 대한 GPS 위도</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><ul>
 <li><p>lon</p></li>
 </ul>
@@ -929,14 +899,14 @@
 <td><p>String</p></td>
 <td><p>node 1 에 대한 GPS 경도</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><p>point2</p></li>
 </ul>
 </td>
 <td><p>Object</p></td>
 <td><p>node 2 에 대한 GPS 좌표 컨테이너</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><ul>
 <li><p>lat</p></li>
 </ul>
@@ -946,7 +916,7 @@
 <td><p>String</p></td>
 <td><p>node 2 에 대한 GPS 위도</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><ul>
 <li><p>lon</p></li>
 </ul>
@@ -956,7 +926,7 @@
 <td><p>String</p></td>
 <td><p>node 2 에 대한 GPS 경도</p></td>
 </tr>
-<tr class="row-even"><td><p>timeStamp</p></td>
+<tr class="row-odd"><td><p>timeStamp</p></td>
 <td><p>Datetime</p></td>
 <td><p>정보 생성 시간</p></td>
 </tr>

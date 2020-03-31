@@ -341,6 +341,8 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 
 실시간 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다. 
 
+:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위이 참조 형태로 요청`
+
 * :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 정보의 유형 및 카테고리 선택 (`rttiField`, `lane`)
 * 위치 참조 방식 선택 (`lr`)
@@ -349,37 +351,45 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 
 .. code-block:: none
 
-  // 원형 geo filter, 모든 교통 정보 표출, 위치 참조 모두 표출, 차선 단위 정보 배제
-  ruut/v1/segments?geoFilter=circle&center=37.397619, 127.112465&radius=10&rttiField=all
-  &lr=all&lane=off
+  // 원형 geo filter 반경 1km, 모든 교통 정보 표출, 위치 참조 openLr
+  ruut/v1/segments?geoFilter=circle&center=37.397619,127.112465&radius=1&incidentField=all
+  &lr=openLr
 
-
-예측 교통 정보
-''''''''''''''''''''''''''
-
-예측 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다. 
-
-:underline:`예) 09:00 부터 1시간 동안의 예측 데이터를 20분 단위로 요청 (09:00, 09:20, 09:40 분 예측 데이터 반환)`
-
-* 실시간 교통 정보 획득 정보 포함
-* 예측 시작 시점 (`start_time`: 20200101090000)
-* 얼마나 오래 데이터를 추출 해야 하는지 (`duration`: 60)
-* 몇 분 간격으로 데이터를 추출 해야 하는지 (`interval`: 20)
-
-:underline:`Request Example`
+:underline:`Response Example`
 
 .. code-block:: none
 
-  ruut/v1/segments?geoFilter=circle&center=37.397619, 127.112465&radius=10&rttiField=all
-  &regionId=0&lr=all&start_time=20200101090000&duration=60&interval=20
-
+  {
+    "segments": [
+        {
+            "segmentId": "1020245101",
+            "roadCategory": "1",
+            "speed": "27",
+            "limit": "70",
+            "freeFlow": "70",
+            "travelTime": "43",
+            "openLr": "C1pllBqXeQ4wBf/X/tQOEQ==",
+            "linkId": "10202451",
+            "segmentCoordinates": {
+                "point1": {
+                    "lat": "37.394568",
+                    "lon": "127.120485"
+                },
+                "point2": {
+                    "lat": "37.391561",
+                    "lon": "127.120067"
+                }
+            },
+            "timeStamp": "2020-03-03 13:19:00"
+        },
+        ...
 
 돌발 정보 (이벤트, 사고)
 ''''''''''''''''''''''''''
 
 돌발 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다. 
 
-:underline:`예) 모든 돌발 정보를 1번 도로 레벨에 한하여 모든 위치 참조 포맷으로 요청`
+:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위이 참조 형태로 요청`
 
 * :ref:`Geo filtering <geofilter>` 돌발 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 정보의 유형 및 카테고리 선택 (`incidentField`, `type`)
@@ -389,8 +399,48 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 
 .. code-block:: none
 
-  ruut/v1/incidents?geoFilter=circle&center=37.397619, 127.112465&radius=100&frc=1
+  ruut/v1/incidents?geoFilter=circle&center=37.397619,127.112465&radius=1
   &incidentField=all&type=all&lr=all
+
+:underline:`Response Example`
+
+.. code-block:: none
+
+  {
+    "incidents": [
+        {
+            "segmentId": "209699101",
+            "incidentId": "L93105264991",
+            "incidentType": "B",
+            "lane": "00",
+            "length": 83,
+            "vehicleKind": "000000",
+            "description": "<경찰청제공>[공사] 세계로 삼평중삼거리 에서 사송사거리 방향 1차로 도로공사 주의운전",
+            "schedule": {
+                "isPlanned": "",
+                "startTime": "202003030806",
+                "endTime": "202003031800",
+                "reoccuring": {
+                    "daysOfWeek": "",
+                    "from": "",
+                    "until": ""
+                }
+            },
+            "openLr": "C1pk5xqYcSugCP/FAb0rHA==",
+            "linkId": "2096991",
+            "segmentCoordinates": {
+                "point1": {
+                    "lat": "37.399888",
+                    "lon": "127.116777"
+                },
+                "point2": {
+                    "lat": "37.404339",
+                    "lon": "127.11618"
+                }
+            },
+            "timeStamp": "2020-03-03 13:15:00"
+        },
+        ...
 
 
 V2X 서비스 연동 요청 
@@ -431,6 +481,9 @@ Incoming Webhook
 --------------------------
 '20년 2분기 제공 예정
 
+예측 교통 정보
+''''''''''''''''''''''''''
+제공 예정 (일정 미정)
 
 과거 교통 정보 요청
 --------------------------
