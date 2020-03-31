@@ -341,11 +341,13 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 
 실시간 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다. 
 
-:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위이 참조 형태로 요청`
+:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위치 참조 형태로 요청`
 
 * :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 정보의 유형 및 카테고리 선택 (`rttiField`, `lane`)
 * 위치 참조 방식 선택 (`lr`)
+
+.. _segment_example:
 
 :underline:`Request Example`
 
@@ -389,11 +391,13 @@ RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 예측 교통 정보
 
 돌발 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다. 
 
-:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위이 참조 형태로 요청`
+:underline:`예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위치 참조 형태로 요청`
 
 * :ref:`Geo filtering <geofilter>` 돌발 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 정보의 유형 및 카테고리 선택 (`incidentField`, `type`)
 * 위치 참조 방식 선택 (`lr`)
+
+.. _incident_example:
 
 :underline:`Request Example`
 

@@ -95,7 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#tfp">4.2.1. TFP (교통 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tec">4.2.2. TEC (사고/이벤트 정보)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wea">4.2.3. WEA (날씨 정보)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">4.2.4. TPEG 어플리케이션 조합</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.2.4. TPEG 어플리케이션 조합</a></li>
 </ul>
 </li>
 </ul>
@@ -214,18 +214,20 @@
 <h3>4.2.1. TFP (교통 정보)<a class="headerlink" href="#tfp" title="Permalink to this headline">¶</a></h3>
 <p>TFP는 Traffic Flow and Predictions 의 약어로 실시간 교통 정보 및 예측 교통 정보를 제공하는 어플리케이션 입니다.
 TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 TFP 메시지를 TPEG ML 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
-<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>tfp</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><a href="#id2"><span class="problematic" id="id3">:underline:`Request Example`</span></a></p>
+<p id="tfp-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TFP application 표출, TPEG ML 형태로 응답
 ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;app=tfp&amp;format=tpegMl
 </pre></div>
 </div>
-<p><a href="#id4"><span class="problematic" id="id5">:underline:`Request Example`</span></a></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;tfp:method xsi:type=&quot;tfp:FlowStatus&quot;&gt;
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+&lt;tfp:method xsi:type=&quot;tfp:FlowStatus&quot;&gt;
   &lt;tfp:startTime&gt;1970-01-01T00: 00: 00Z&lt;/tfp:startTime&gt;
   &lt;tfp:duration&gt;0&lt;/tfp:duration&gt;
   &lt;tfp:status&gt;
@@ -250,14 +252,38 @@ ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;rad
 <h3>4.2.2. TEC (사고/이벤트 정보)<a class="headerlink" href="#tec" title="Permalink to this headline">¶</a></h3>
 <p>TEC는 Traffic Event Compact 의 약어로 실시간 교통 이벤트 정보를 (사고, 통제, 공사 등) 제공하는 어플리케이션 입니다.
 TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 TEC 메시지를 TPEG ML 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
-<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>tec</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><a href="#id6"><span class="problematic" id="id7">:underline:`Request Example`</span></a></p>
+<p id="tec-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, TEC application 표출, TPEG ML 형태로 응답
-ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=tfp&amp;format=tpegMl
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;app=tfp&amp;format=tpegMl
+</pre></div>
+</div>
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+&lt;tec:event&gt;
+  &lt;tec:effectCode tec:code=&quot;4&quot; tec:table=&quot;tec001_EffectCode&quot;/&gt;
+  &lt;tec:startTime&gt;2020-01-30T22: 47: 00Z&lt;/tec:startTime&gt;
+  &lt;tec:stopTime&gt;2020-01-31T09: 00: 00Z&lt;/tec:stopTime&gt;
+  &lt;tec:cause&gt;
+    &lt;tec:optionDirectCause&gt;
+      &lt;tec:mainCause tec:code=&quot;3&quot; tec:table=&quot;tec002_CauseCode&quot;/&gt;
+      &lt;tec:warningLevel tec:code=&quot;0&quot; tec:table=&quot;tec003_WarningLevel&quot;/&gt;
+      &lt;tec:unverifiedInformation&gt;false&lt;/tec:unverifiedInformation&gt;
+      &lt;tec:subCause tec:code=&quot;3&quot; tec:table=&quot;tec100_SubCause&quot;/&gt;
+      &lt;tec:laneRestrictionType tec:code=&quot;0&quot; tec:table=&quot;tec004_LaneRestriction&quot;/&gt;
+      &lt;tec:freeText&gt;
+        &lt;tdt:languageCode tdt:code=&quot;85&quot; tdt:table=&quot;typ001_LanguageCode&quot;/&gt;
+        &lt;tdt:value&gt;경찰청제공 공사 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전&lt;/tdt:value&gt;
+      &lt;/tec:freeText&gt;
+    &lt;/tec:optionDirectCause&gt;
+  &lt;/tec:cause&gt;
+&lt;/tec:event&gt;
+...
 </pre></div>
 </div>
 </div>
@@ -265,30 +291,127 @@ ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;ra
 <h3>4.2.3. WEA (날씨 정보)<a class="headerlink" href="#wea" title="Permalink to this headline">¶</a></h3>
 <p>WEA는 Weather 의 약어로 실시간 날씨 정보를 제공하는 어플리케이션 입니다.
 WEA 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 WEA 메시지를 TPEG ML 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
-<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>)</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>wea</cite>)</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><a href="#id8"><span class="problematic" id="id9">:underline:`Request Example`</span></a></p>
+<p id="wea-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA application 표출, TPEG ML 형태로 응답
-ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea&amp;format=tpegMl
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;app=wea&amp;format=tpegMl
+</pre></div>
+</div>
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+&lt;wea:weatherInfo&gt;
+  &lt;wea:geographicalSignificance wea:code=&quot;6&quot; wea:table=&quot;wea011_GeoSignificance&quot;/&gt;
+  &lt;wea:weatherReport&gt;
+    &lt;wea:reportType wea:code=&quot;4&quot; wea:table=&quot;wea000_ReportType&quot;/&gt;
+    &lt;wea:weatherDefinition&gt;
+      &lt;wea:period wea:code=&quot;0&quot; wea:table=&quot;wea001_Period&quot;/&gt;
+      &lt;wea:weatherDescription&gt;
+        &lt;wea:subTableType wea:code=&quot;106&quot; wea:table=&quot;wea100_ElementType&quot;/&gt;
+        &lt;wea:subTableValue wea:code=&quot;0&quot; wea:table=&quot;wea099_ElementSubTable&quot;/&gt;
+      &lt;/wea:weatherDescription&gt;
+      &lt;wea:start&gt;0000-00-00T00: 09: 00&lt;/wea:start&gt;
+      &lt;wea:stop&gt;0000-00-00T01: 09: 00&lt;/wea:stop&gt;
+      &lt;wea:date&gt;0000-00-27T00: 00: 00&lt;/wea:date&gt;
+      &lt;wea:statistics&gt;
+        &lt;wea:cloudCover&gt;8&lt;/wea:cloudCover&gt;
+        &lt;wea:pressure&gt;1013&lt;/wea:pressure&gt;
+        &lt;wea:temp&gt;13.58&lt;/wea:temp&gt;
+        &lt;wea:tempMax&gt;14&lt;/wea:tempMax&gt;
+        &lt;wea:tempMin&gt;13&lt;/wea:tempMin&gt;
+        &lt;wea:windDirection wea:code=&quot;0&quot; wea:table=&quot;wea003_Direction&quot;/&gt;
+        &lt;wea:windSpeed&gt;1&lt;/wea:windSpeed&gt;
+        &lt;wea:relativeHumidity&gt;188&lt;/wea:relativeHumidity&gt;
+        &lt;wea:sunrise&gt;2020-03-27T06: 24: 25&lt;/wea:sunrise&gt;
+        &lt;wea:sunset&gt;2020-03-27T18: 48: 59&lt;/wea:sunset&gt;
+      &lt;/wea:statistics&gt;
+    &lt;/wea:weatherDefinition&gt;
+  &lt;/wea:weatherReport&gt;
+&lt;/wea:weatherInfo&gt;
+...
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3>4.2.4. TPEG 어플리케이션 조합<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>4.2.4. TPEG 어플리케이션 조합<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>위에서 설명한 TPEG 어플리케이션은 사용자 편의에 따라 조합하여 요청할 수 있습니다. 하나 이상의 어플리케이션 정보를 확인하려면 아래 항목을 검토 작성하셔야 합니다.</p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 TFP/TEC/WEA 메시지를 TPEG ML 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
-<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>app</cite>). (쉼표 ‘,’) 를 통해 구분하여 여러 어플리케이션 조합 요청 가능</p></li>
+<li><p>획득 하고자 하는 TPEG 어플리케이션 유형 선택 (<cite>tfp,tec,wea</cite>). (쉼표 ‘,’) 를 통해 구분하여 여러 어플리케이션 조합 요청 가능</p></li>
 <li><p>메시지 포맷 선택 (<cite>base64xml</cite>, <cite>tpegMl</cite>)</p></li>
 </ul>
-<p><a href="#id11"><span class="problematic" id="id12">:underline:`Request Example`</span></a></p>
+<p id="tpeg-mix-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter, WEA, TFP application 표출, TPEG ML 형태로 응답
-ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619, 127.112465&amp;radius=10&amp;app=wea,tfp&amp;format=tpegMl
+ruut/v1/tpeg/getMessage?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;app=tfp,tec,wea&amp;format=tpegMl
 </pre></div>
 </div>
+<p><span class="underline">Response Example</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// TFP messages
+...
+&lt;tfp:method xsi:type=&quot;tfp:FlowStatus&quot;&gt;
+  &lt;tfp:startTime&gt;1970-01-01T00: 00: 00Z&lt;/tfp:startTime&gt;
+  &lt;tfp:duration&gt;0&lt;/tfp:duration&gt;
+  &lt;tfp:status&gt;
+    &lt;tfp:LOS tfp:code=&quot;4&quot; tfp:table=&quot;tfp003_LevelOfService&quot;/&gt;
+    &lt;tfp:averageSpeed&gt;15&lt;/tfp:averageSpeed&gt;
+    &lt;tfp:freeFlowTravelTime&gt;60&lt;/tfp:freeFlowTravelTime&gt;
+  &lt;/tfp:status&gt;
+...
+
+//TEC messages
+...
+&lt;tec:event&gt;
+  &lt;tec:effectCode tec:code=&quot;4&quot; tec:table=&quot;tec001_EffectCode&quot;/&gt;
+  &lt;tec:startTime&gt;2020-01-30T22: 47: 00Z&lt;/tec:startTime&gt;
+  &lt;tec:stopTime&gt;2020-01-31T09: 00: 00Z&lt;/tec:stopTime&gt;
+  &lt;tec:cause&gt;
+    &lt;tec:optionDirectCause&gt;
+      &lt;tec:mainCause tec:code=&quot;3&quot; tec:table=&quot;tec002_CauseCode&quot;/&gt;
+      &lt;tec:warningLevel tec:code=&quot;0&quot; tec:table=&quot;tec003_WarningLevel&quot;/&gt;
+      &lt;tec:unverifiedInformation&gt;false&lt;/tec:unverifiedInformation&gt;
+      &lt;tec:subCause tec:code=&quot;3&quot; tec:table=&quot;tec100_SubCause&quot;/&gt;
+      &lt;tec:laneRestrictionType tec:code=&quot;0&quot; tec:table=&quot;tec004_LaneRestriction&quot;/&gt;
+      &lt;tec:freeText&gt;
+        &lt;tdt:languageCode tdt:code=&quot;85&quot; tdt:table=&quot;typ001_LanguageCode&quot;/&gt;
+        &lt;tdt:value&gt;경찰청제공 공사 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전&lt;/tdt:value&gt;
+</pre></div>
+</div>
+<p>…</p>
+<p>//WEA messages
+…
+&lt;wea:weatherInfo&gt;</p>
+<blockquote>
+<div><p>&lt;wea:geographicalSignificance wea:code=”6” wea:table=”wea011_GeoSignificance”/&gt;
+&lt;wea:weatherReport&gt;</p>
+<blockquote>
+<div><p>&lt;wea:reportType wea:code=”4” wea:table=”wea000_ReportType”/&gt;
+&lt;wea:weatherDefinition&gt;</p>
+<blockquote>
+<div><p>&lt;wea:period wea:code=”0” wea:table=”wea001_Period”/&gt;
+&lt;wea:weatherDescription&gt;</p>
+<blockquote>
+<div><p>&lt;wea:subTableType wea:code=”106” wea:table=”wea100_ElementType”/&gt;
+&lt;wea:subTableValue wea:code=”0” wea:table=”wea099_ElementSubTable”/&gt;</p>
+</div></blockquote>
+<p>&lt;/wea:weatherDescription&gt;
+&lt;wea:start&gt;0000-00-00T00: 09: 00&lt;/wea:start&gt;
+&lt;wea:stop&gt;0000-00-00T01: 09: 00&lt;/wea:stop&gt;
+&lt;wea:date&gt;0000-00-27T00: 00: 00&lt;/wea:date&gt;
+&lt;wea:statistics&gt;</p>
+<blockquote>
+<div><p>&lt;wea:cloudCover&gt;8&lt;/wea:cloudCover&gt;
+&lt;wea:pressure&gt;1013&lt;/wea:pressure&gt;
+&lt;wea:temp&gt;13.58&lt;/wea:temp&gt;</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>…</p>
 </div>
 </div>
 </div>

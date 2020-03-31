@@ -191,47 +191,7 @@ timeStamp           Datetime   정보 생성 시간
 
 Segment Request/Response Example
 ..........................
-**Request Example**
-
-+------------+-------------------------------------------------------------------------------------+
-| **GET**    | `{host-ip}/ruut/v1/segments?geoFilter=circle&center=37.397619,%20127.112465`        |
-|            | `&radius=10&frc=1&rttiField=all&regionId=0&lr=all&lane=on`                          |
-+------------+-------------------------------------------------------------------------------------+
-
-**Response Example**
-
-.. code-block:: json
-
-    {
-      "segments": [{
-        "segmentId": "1020174101",
-        "roadCate": 1,
-        "speed": "84",
-        "limit": "80",
-        "freeFlow": "80",
-        "travelTime": "58",
-        "openLR": "C1pdVxqjGwktFgCN+34JEQ==",
-        "agoraC": "",
-        "linkId": "10201741",
-          "segmentCoordinates": {
-            "point1": {
-              "lat": "33.300924",
-              "lon": "126.179686"
-            },
-            "point2": {
-              "lat": "33.295099",
-              "lon": "126.183394"
-            }
-          },
-        "lane": [
-            {
-                "laneNumber": "3",
-                "laneSpeed": "45"
-            }
-        ],
-        "timeStamp": "2019-10-23 15:04:00"
-      }]
-    }
+:ref:`RUUT API Segment 요청/응답 예제 <segment_example>` 를 참고 하시기 바랍니다.
 
 Incident
 ''''''''''''''''''''''''''
@@ -329,43 +289,7 @@ timeStamp             Datetime   정보 생성 시간
 
 Request/Response Example
 ..........................
-**Request Example**
-
-+------------+--------------------------------------------------------------------------------------+
-| **GET**    | `{host-ip}/ruut/:version/incidents?geoFilter=circle&center=37.397619, 127.112465&`   |
-|            | `radius=100&frc=1&incidentField=all&type=all&lr=all`                                 |
-+------------+--------------------------------------------------------------------------------------+
-
-**Response Example**
-
-.. code-block:: json
-
-    "incidents": [
-        {
-            "segmentId": "1020004101",
-            "incidentId": "L93105079001",
-            "incidentType": "B",
-            "severity": "",
-            "impacting": "",
-            "status": "",
-            "lane": "00",
-            "length": 188,
-            "vehicleKind": "000000",
-            "description": "<경찰청제공>[공사] 올림픽대로 가양대교 에서 방화대교 방향 3차로 도로공사 / 공사명 : 2019년 자동차전용도로 강남배수시설물 준설 및 정비공사 (연간단가) / 장소 : 올림픽대로램프 88JC / 부분통제",
-            "schedule": {
-                "isPlanned": "",
-                "startTime": "201910182300",
-                "endTime": "201910260600",
-                "reoccuring": {
-                    "daysOfWeek": "",
-                    "from": "",
-                    "until": ""
-                }
-            },
-            "openLR": "C1os2xq6/gkqFwUd/XQJCg==",
-            "agoraC": "",
-            "timeStamp": "2019-10-23 15:04:00"
-        }
+:ref:`RUUT API Incident 요청/응답 예제 <incident_example>` 를 참고 하시기 바랍니다.
 
 .. _v2x_apidoc:
 
@@ -456,7 +380,7 @@ V2X 이벤트가 발생하면 사용자가 등록한 Webhook URL로 Webhook 이 
 응급 차량 목적지 (재난지) 정보 알림
 ..........................
 
-**Response Elements**
+**Webhook Payload Elements**
 
 ==================  =========  ===========================================================================
 Property            Type       Description
@@ -482,7 +406,7 @@ locationOfDisaster  String     재난 위치 GPS 정보 배열
 timeStamp           String     정보 생성 시간 
 ==================  =========  ===========================================================================
 
-**Response Example**
+**Webhook Payload Example**
 
 .. code-block:: json
 
@@ -503,7 +427,7 @@ timeStamp           String     정보 생성 시간
 응급 차량 이동 알림
 ..........................
 
-**Response Elements**
+**Webhook Payload Elements**
 
 ==================  =========  ===========================================================================
 Property            Type       Description
@@ -525,7 +449,7 @@ locationOfDisaster  String     응급 출동 차량 GPS 정보 배열
 timeStamp           String     정보 생성 시간 
 ==================  =========  ===========================================================================
 
-**Response Example**
+**Webhook Payload Example**
 
 .. code-block:: json
 
@@ -544,7 +468,7 @@ timeStamp           String     정보 생성 시간
 급정거 알림 및 기타 V2X 이벤트 알림
 ..........................
 
-**Response Elements**
+**Webhook Payload Elements**
 
 .. note:: 본 메시지는 eventType 에 따라 구분 됩니다.
 
@@ -577,7 +501,7 @@ locationOfDisaster  String     이벤트 위치 GPS 정보 배열
 timeStamp           String     정보 생성 시간 
 ==================  =========  ===========================================================================
 
-**Response Example**
+**Webhook Payload Example**
 
 .. code-block:: json
 
@@ -647,48 +571,7 @@ TEPG2 요청에 대한 응답은 2 가지 형태로 제공 됩니다.
 
 Request/Response Example
 ..........................
-**Request Example**
-
-+------------+--------------------------------------------------------------------------------------+
-| **GET**    | `{host-ip}/ruut/:version/tpeg/getMessage?geoFilter=circle&center=37.521523,`         | 
-|            | `127.017932&radius=0.5&app=tfp&format=tpegML&frc=0&fullUpdate=on`                    |
-+------------+--------------------------------------------------------------------------------------+
-
-**Response Example**
-
-.. code-block:: xml
-
-	<ApplicationRootMessage>
-        <ApplicationRootMessageML xsi:type="tfp:TFPMessage" xmlns:tfp="http://www.tisa.org/TPEG/TFP_1_0">
-            <tfp:mmt>
-                <tfp:optionMessageManagement>
-                    <mmc:messageID>53745</mmc:messageID>
-                    <mmc:versionID>12</mmc:versionID>
-                    <mmc:messageExpiryTime>1970-01-01T00: 00: 00Z</mmc:messageExpiryTime>
-                    <mmc:cancelFlag>false</mmc:cancelFlag>
-                    <mmc:messageGenerationTime>2019-10-23T05: 52: 00Z</mmc:messageGenerationTime>
-                </tfp:optionMessageManagement>
-            </tfp:mmt>
-            <tfp:method xsi:type="tfp:FlowStatus">
-                <tfp:startTime>1970-01-01T00: 00: 00Z</tfp:startTime>
-                <tfp:duration>0</tfp:duration>
-                <tfp:status>
-                    <tfp:LOS tfp:code="2" tfp:table="tfp003_LevelOfService"/>
-                    <tfp:averageSpeed>60</tfp:averageSpeed>
-                    <tfp:freeFlowTravelTime>80</tfp:freeFlowTravelTime>
-                </tfp:status>
-                <tfp:restriction>
-                    <tfp:lanes tfp:code="0" tfp:table="tfp005_laneRestriction"/>
-                </tfp:restriction>
-                    <tfp:cause tfp:code="0" tfp:table="tfp006_CauseCode"/>
-                <tfp:detailedCause>
-                    <tfp:messageID>53745</tfp:messageID>
-                    <tfp:COID>0</tfp:COID>
-                </tfp:detailedCause>
-            </tfp:method>
-            <tfp:loc>00000000380000003801005A52851AAD88000900000005000000050000010C000A00000004000000040502FE0000CC027600090000000500000005050003ED0000</tfp:loc>
-        </ApplicationRootMessageML>
-    </ApplicationRootMessage>
+:ref:`TFP 요청 응답 예제 <tfp_example>`, :ref:`TEC 요청 응답 예제 <tec_example>`, :ref:`WEA 요청 응답 예제 <wea_example>`, :ref:`TPEG 조합 요청 응답 예제 <tpeg_mix_example>` 를 참고 하시기 바랍니다.
 
 Errors
 --------------------------

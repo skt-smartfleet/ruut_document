@@ -184,12 +184,24 @@
     <span class="nt">&quot;travelTime&quot;</span><span class="p">:</span> <span class="s2">&quot;estimated time to traverse the segment&quot;</span><span class="p">,</span>
     <span class="nt">&quot;openLR&quot;</span><span class="p">:</span> <span class="s2">&quot;openLR code of the segment&quot;</span><span class="p">,</span>
     <span class="nt">&quot;agoraC&quot;</span><span class="p">:</span> <span class="s2">&quot;AGORA-C code of the segment&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;gps-coordinates&quot;</span><span class="p">:</span> <span class="s2">&quot;gps coordinates of the start/end node of the segment&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;confidenceLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;Level of confidence of the traffic prediction (prediction only)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;lane&quot;</span><span class="p">:</span> <span class="p">[{</span>
-      <span class="nt">&quot;laneNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;Lane number&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;laneSpeed&quot;</span><span class="p">:</span> <span class="s2">&quot;dedicated speed of the lane on the segment&quot;</span>
-    <span class="p">}],</span>
+    <span class="nt">&quot;linkId&quot;</span><span class="p">:</span> <span class="s2">&quot;TSD Link ID of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;segmentCoordinates&quot;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;point1&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;latitude of the point1 of the segment&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;longitude of the point1 of the segment&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;point2&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;latitude of the point2 of the segment&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;longitude of the point2 of the segment&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;lane&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;laneNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;Lane number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;laneSpeed&quot;</span><span class="p">:</span> <span class="s2">&quot;dedicated speed of the lane on the segment&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
     <span class="nt">&quot;timeStamp&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp of the information&quot;</span>
   <span class="p">}]</span>
 <span class="p">}</span>
@@ -218,9 +230,21 @@
         <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;start time of the upcoming event&quot;</span><span class="p">,</span>
         <span class="nt">&quot;until&quot;</span><span class="p">:</span> <span class="s2">&quot;end time of the upcomfing event&quot;</span>
       <span class="p">}</span>
-     <span class="p">},</span>
-    <span class="nt">&quot;openLR&quot;</span><span class="p">:</span> <span class="s2">&quot;openLR code of the segment&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;openLr&quot;</span><span class="p">:</span> <span class="s2">&quot;openLr code of the segment&quot;</span><span class="p">,</span>
     <span class="nt">&quot;agoraC&quot;</span><span class="p">:</span> <span class="s2">&quot;AGORA-C code of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;linkId&quot;</span><span class="p">:</span> <span class="s2">&quot;TSD Link ID of the segment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;segmentCoordinates&quot;</span><span class="p">:</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;point1&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;latitude of the point1 of the segment&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;longitude of the point1 of the segment&quot;</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;point2&quot;</span><span class="p">:{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;latitude of the point2 of the segment&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="s2">&quot;longitude of the point2 of the segment&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
     <span class="nt">&quot;timeStamp&quot;</span><span class="p">:</span> <span class="s2">&quot;timestamp of the information&quot;</span>
   <span class="p">}]</span>
 <span class="p">}</span>

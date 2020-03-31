@@ -42,6 +42,8 @@ TFP 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 * 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`tfp`)
 * 메시지 포맷 선택 (`base64xml`, `tpegMl`)
 
+.. _tfp_example:
+
 :underline:`Request Example`
 
 .. code-block:: none
@@ -86,6 +88,8 @@ TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 * 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`tec`)
 * 메시지 포맷 선택 (`base64xml`, `tpegMl`)
 
+.. _tec_example:
+
 :underline:`Request Example`
 
 .. code-block:: none
@@ -129,6 +133,8 @@ WEA 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
 * :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`wea`)
 * 메시지 포맷 선택 (`base64xml`, `tpegMl`)
+
+.. _wea_example:
 
 :underline:`Request Example`
 
@@ -182,6 +188,8 @@ TPEG 어플리케이션 조합
 * :ref:`Geo filtering <geofilter>` 교통 정보 탐색하고자 하는 지리적 영역 규정 (`geoFilter`)
 * 획득 하고자 하는 TPEG 어플리케이션 유형 선택 (`tfp,tec,wea`). (쉼표 ',') 를 통해 구분하여 여러 어플리케이션 조합 요청 가능
 * 메시지 포맷 선택 (`base64xml`, `tpegMl`)
+
+.. _tpeg_mix_example:
 
 :underline:`Request Example`
 

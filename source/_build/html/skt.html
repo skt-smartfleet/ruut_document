@@ -643,13 +643,13 @@
 <div class="section" id="id9">
 <h3>3.2.1. 실시간 교통 정보<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>실시간 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
-<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위이 참조 형태로 요청</span></p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위치 참조 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 교통 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
 <li><p>획득 하고자 하는 정보의 유형 및 카테고리 선택 (<cite>rttiField</cite>, <cite>lane</cite>)</p></li>
 <li><p>위치 참조 방식 선택 (<cite>lr</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p id="segment-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// 원형 geo filter 반경 1km, 모든 교통 정보 표출, 위치 참조 openLr
 ruut/v1/segments?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&amp;incidentField=all
 &amp;lr=openLr
@@ -686,13 +686,13 @@ ruut/v1/segments?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&a
 <div class="section" id="id10">
 <h3>3.2.2. 돌발 정보 (이벤트, 사고)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>돌발 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
-<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위이 참조 형태로 요청</span></p>
+<p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위치 참조 형태로 요청</span></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api.html#geofilter"><span class="std std-ref">Geo filtering</span></a> 돌발 정보 탐색하고자 하는 지리적 영역 규정 (<cite>geoFilter</cite>)</p></li>
 <li><p>획득 하고자 하는 정보의 유형 및 카테고리 선택 (<cite>incidentField</cite>, <cite>type</cite>)</p></li>
 <li><p>위치 참조 방식 선택 (<cite>lr</cite>)</p></li>
 </ul>
-<p><span class="underline">Request Example</span></p>
+<p id="incident-example"><span class="underline">Request Example</span></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ruut/v1/incidents?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1
 &amp;incidentField=all&amp;type=all&amp;lr=all
 </pre></div>
