@@ -111,8 +111,7 @@ TEC 메시지를 수신하시려면 아래 항목을 검토 작성하셔야 합�
         <tec:laneRestrictionType tec:code="0" tec:table="tec004_LaneRestriction"/>
         <tec:freeText>
           <tdt:languageCode tdt:code="85" tdt:table="typ001_LanguageCode"/>
-          <tdt:value>&lt;경찰청제공&gt;[공사
-] 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전</tdt:value>
+          <tdt:value>경찰청제공 공사 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전</tdt:value>
         </tec:freeText>
       </tec:optionDirectCause>
     </tec:cause>
@@ -222,8 +221,7 @@ TPEG 어플리케이션 조합
         <tec:laneRestrictionType tec:code="0" tec:table="tec004_LaneRestriction"/>
         <tec:freeText>
           <tdt:languageCode tdt:code="85" tdt:table="typ001_LanguageCode"/>
-          <tdt:value>&lt;경찰청제공&gt;[공사
-] 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전</tdt:value>
+          <tdt:value>경찰청제공 공사 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전</tdt:value>
 ...
 
 //WEA messages
