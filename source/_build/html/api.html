@@ -377,10 +377,10 @@
 </div>
 <div class="section" id="ruut">
 <h2>6.2. RUUT<a class="headerlink" href="#ruut" title="Permalink to this headline">¶</a></h2>
-<p>RUUT 플랫폼에서 자체적으로 제공하고 있는 API 구성을 설명 합니다. RUUT API 는 크게 Segement 와 Incident 로 구성 되어 있습니다. Segement 는 실시간 교통 정보 및 예측 교통 정보 검색에 사용되며, Incident 는 실시간 이벤트 (사고, 공사, 재해 등) 검색에 사용됩니다. TPEG2 데이터 검색은 TPEG2 섹션을 참고 하시기 바랍니다.</p>
+<p>RUUT 플랫폼에서 자체적으로 제공하고 있는 API 구성을 설명 합니다. RUUT API 는 크게 Segement 와 Incident 로 구성 되어 있습니다. Segement 는 실시간 교통 정보 검색에 사용되며, Incident 는 실시간 이벤트 (사고, 공사, 재해 등) 검색에 사용됩니다. TPEG2 데이터 검색은 TPEG2 섹션을 참고 하시기 바랍니다.</p>
 <div class="section" id="segment">
 <h3>6.2.1. Segment<a class="headerlink" href="#segment" title="Permalink to this headline">¶</a></h3>
-<p>RUUT API 의 path 파라미터로 사용되는 segment 는 실시간 또는 예측 교통 정보를 요청 하기 위해 사용 됩니다. 해당 교통 정보에 이벤트 (사고, 재해, 공사등)정보는 포함되지 않습니다. 이벤트 정보는 아래 incident 를 참조하시기 바랍니다.</p>
+<p>RUUT API 의 path 파라미터로 사용되는 segment 는 실시간 교통 정보를 요청 하기 위해 사용 됩니다. 해당 교통 정보에 이벤트 (사고, 재해, 공사등)정보는 포함되지 않습니다. 이벤트 정보는 아래 incident 를 참조하시기 바랍니다.</p>
 <p><strong>Segment Request</strong></p>
 <table class="docutils align-default">
 <colgroup>
@@ -535,40 +535,36 @@
 <td><p>String</p></td>
 <td><p>위치 참조를 위한 AGORA-C encoded code</p></td>
 </tr>
-<tr class="row-even"><td><p>confidenceLevel</p></td>
-<td><p>String</p></td>
-<td><p>예측 신뢰도 (에측 데이터일 경우에만 제공)</p></td>
-</tr>
-<tr class="row-odd"><td><p>lane</p></td>
+<tr class="row-even"><td><p>lane</p></td>
 <td><p>Array</p></td>
 <td><p>차선 교통 정보 제공을 위한 배열 객체</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><p>laneNumber</p></li>
 </ul>
 </td>
 <td><p>String</p></td>
 <td><p>차선 번호 (안쪽 차선부터 1차선)</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><p>laneSpeed</p></li>
 </ul>
 </td>
 <td><p>Integer</p></td>
 <td><p>laneNumber 로 특정된 차선의 측정 속도</p></td>
 </tr>
-<tr class="row-even"><td><p>segmentCoordinates</p></td>
+<tr class="row-odd"><td><p>segmentCoordinates</p></td>
 <td><p>Object</p></td>
 <td><p>segment nodes 에 대한 GPS 좌표 제공 (양 끝 노드)</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><p>point1</p></li>
 </ul>
 </td>
 <td><p>Object</p></td>
 <td><p>node 1 에 대한 GPS 좌표 컨테이너</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><ul>
 <li><p>lat</p></li>
 </ul>
@@ -578,7 +574,7 @@
 <td><p>String</p></td>
 <td><p>node 1 에 대한 GPS 위도</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><ul>
 <li><p>lon</p></li>
 </ul>
@@ -588,14 +584,14 @@
 <td><p>String</p></td>
 <td><p>node 1 에 대한 GPS 경도</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><p>point2</p></li>
 </ul>
 </td>
 <td><p>Object</p></td>
 <td><p>node 2 에 대한 GPS 좌표 컨테이너</p></td>
 </tr>
-<tr class="row-odd"><td><ul class="simple">
+<tr class="row-even"><td><ul class="simple">
 <li><ul>
 <li><p>lat</p></li>
 </ul>
@@ -605,7 +601,7 @@
 <td><p>String</p></td>
 <td><p>node 2 에 대한 GPS 위도</p></td>
 </tr>
-<tr class="row-even"><td><ul class="simple">
+<tr class="row-odd"><td><ul class="simple">
 <li><ul>
 <li><p>lon</p></li>
 </ul>
@@ -615,7 +611,7 @@
 <td><p>String</p></td>
 <td><p>node 2 에 대한 GPS 경도</p></td>
 </tr>
-<tr class="row-odd"><td><p>timeStamp</p></td>
+<tr class="row-even"><td><p>timeStamp</p></td>
 <td><p>Datetime</p></td>
 <td><p>정보 생성 시간</p></td>
 </tr>
