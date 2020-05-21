@@ -17,7 +17,7 @@ Segment
 ----------------
 RUUT 는 지도 형태 독립적으로 도로를 관리합니다. 이에 교통 정보를 더 효율적으로 관리할 수 있도록 별도의 도로 링크 형태를 활용하며 이를 시스템 내에서 Segment라 부릅니다.하나의 Segment는 시작 노드(Start Node)와 종료 노드(End Node)를 가진 선형 링크(Linear Link)이며, RUUT 의 모든 기본 정보 제공 단위는 Segment이며 해당 Segment를 활용한 맵 매칭을 위해서 openLR, AGORA-C 와 같은 Dynamic Location Referencing 기법에 따른 위치 참조 코드를 제공하고 있습니다. Dynamic Location Referencing 기법을 활용하기 어려운 light 사용자를 위하여 Segment의 시작/끝 지점에 대한 GPS 좌표를 동시에 제공하고 있습니다.
 
-RUUT 를 구성하는 가장 기본 구성 단위이기 때문에 Segment 를 endpoint 로 하는 API 요청 응답은 Segment 기반으로 실시간/예측 교통 정보를 전달하고 해당 메시지 포맷은 아래 코드 블록과 같습니다.
+RUUT 를 구성하는 가장 기본 구성 단위이기 때문에 Segment 를 endpoint 로 하는 API 요청 응답은 Segment 기반으로 실시간 교통 정보를 전달하고 해당 메시지 포맷은 아래 코드 블록과 같습니다.
 
 **Segment 메시지 응답**
 
