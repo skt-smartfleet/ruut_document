@@ -98,8 +98,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ruut-api">3.2. RUUT 고유 API 활용</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.1. 실시간 교통 정보</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.2. 돌발 정보 (이벤트, 사고)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.1. 실시간 교통 정보</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.2.2. 돌발 정보 (이벤트, 사고)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v2x">3.3. V2X 서비스 연동 요청</a><ul>
@@ -107,11 +107,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#incoming-webhook">3.3.2. Incoming Webhook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">3.4. 도로 위험 점수 획득</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">3.4.1. 예측 교통 정보 (비공개)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">3.4. 도로 위험 점수 획득</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.4.1. 예측 교통 정보 (비공개)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">3.5. 과거 교통 정보 요청</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">3.5. 과거 교통 정보 요청</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tpeg.html">4. RUUT TPEG 서비스 가이드</a></li>
@@ -608,8 +608,7 @@
 </div>
 <div class="section" id="ruut-api">
 <h2>3.2. RUUT 고유 API 활용<a class="headerlink" href="#ruut-api" title="Permalink to this headline">¶</a></h2>
-<p>RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 돌발 (사고 및 이벤트) 정보, V2X 서비스 구독,  예측 교통 정보 (비공개), 도로 위험도 정보 제공 (2020년 4분기 예정) 등의 기능을 제공하고 있습니다. 앞서 인증 과정에서 발급받은 API 접근 키 API 헤더에 포함 시킨 후
-:ref:<a href="#id7"><span class="problematic" id="id8">`</span></a>API규격 &lt;apidoc&gt;`에 따라 원하는 정보를 요청 하시면 됩니다.</p>
+<p>RUUT 고유 API 는 JSON 형태로 실시간 교통 정보, 돌발 (사고 및 이벤트) 정보, V2X 서비스 구독,  예측 교통 정보 (비공개), 도로 위험도 정보 제공 (2020년 4분기 예정) 등의 기능을 제공하고 있습니다. 앞서 인증 과정에서 발급받은 API 접근 키 API 헤더에 포함 시킨 후 <a class="reference internal" href="api.html#apidoc"><span class="std std-ref">API규격</span></a> 에 따라 원하는 정보를 요청 하시면 됩니다.</p>
 <ul class="simple">
 <li><p>Header</p></li>
 </ul>
@@ -640,8 +639,8 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="id9">
-<h3>3.2.1. 실시간 교통 정보<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>3.2.1. 실시간 교통 정보<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>실시간 교통 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
 <p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 실시간 교통 정보를 openLR 위치 참조 형태로 요청</span></p>
 <ul class="simple">
@@ -683,8 +682,8 @@ ruut/v1/segments?geoFilter=circle&amp;center=37.397619,127.112465&amp;radius=1&a
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h3>3.2.2. 돌발 정보 (이벤트, 사고)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>3.2.2. 돌발 정보 (이벤트, 사고)<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>돌발 정보를 획득 하려면 API URL 에 하기 항목을 명시하셔야 합니다.</p>
 <p><span class="underline">예) 특정 지역 중심 반경 1km 원형 영역 내 모든 돌발 정보를 openLR 위치 참조 형태로 요청</span></p>
 <ul class="simple">
@@ -768,16 +767,16 @@ Body :
 <p>세부 정보는 <a class="reference internal" href="api.html#v2xincoming"><span class="std std-ref">V2X 서비스 Incoming Webhook 명세</span></a> 을 참고하시기 바랍니다.</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>3.4. 도로 위험 점수 획득<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>3.4. 도로 위험 점수 획득<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>‘20년 2분기 제공 예정</p>
-<div class="section" id="id12">
-<h3>3.4.1. 예측 교통 정보 (비공개)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>3.4.1. 예측 교통 정보 (비공개)<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>별도 계약 필요 (관리자 문의)</p>
 </div>
 </div>
-<div class="section" id="id13">
-<h2>3.5. 과거 교통 정보 요청<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>3.5. 과거 교통 정보 요청<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>별도 계약 필요 (관리자 문의)</p>
 </div>
 </div>
