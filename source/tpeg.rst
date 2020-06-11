@@ -230,27 +230,27 @@ TPEG 어플리케이션 조합
         <tec:freeText>
           <tdt:languageCode tdt:code="85" tdt:table="typ001_LanguageCode"/>
           <tdt:value>경찰청제공 공사 방아다리길 탄천로95 에서 방아다리사거리 방향 1차로 도로공사 주의운전</tdt:value>
-...
+  ...
 
-//WEA messages
-...
-<wea:weatherInfo>
-  <wea:geographicalSignificance wea:code="6" wea:table="wea011_GeoSignificance"/>
-  <wea:weatherReport>
-    <wea:reportType wea:code="4" wea:table="wea000_ReportType"/>
-    <wea:weatherDefinition>
-      <wea:period wea:code="0" wea:table="wea001_Period"/>
-      <wea:weatherDescription>
-        <wea:subTableType wea:code="106" wea:table="wea100_ElementType"/>
-        <wea:subTableValue wea:code="0" wea:table="wea099_ElementSubTable"/>
-      </wea:weatherDescription>
-      <wea:start>0000-00-00T00: 09: 00</wea:start>
-      <wea:stop>0000-00-00T01: 09: 00</wea:stop>
-      <wea:date>0000-00-27T00: 00: 00</wea:date>
-      <wea:statistics>
-        <wea:cloudCover>8</wea:cloudCover>
-        <wea:pressure>1013</wea:pressure>
-        <wea:temp>13.58</wea:temp>
-...
+  //WEA messages
+  ...
+  <wea:weatherInfo>
+    <wea:geographicalSignificance wea:code="6" wea:table="wea011_GeoSignificance"/>
+    <wea:weatherReport>
+      <wea:reportType wea:code="4" wea:table="wea000_ReportType"/>
+      <wea:weatherDefinition>
+        <wea:period wea:code="0" wea:table="wea001_Period"/>
+        <wea:weatherDescription>
+          <wea:subTableType wea:code="106" wea:table="wea100_ElementType"/>
+          <wea:subTableValue wea:code="0" wea:table="wea099_ElementSubTable"/>
+        </wea:weatherDescription>
+        <wea:start>0000-00-00T00: 09: 00</wea:start>
+        <wea:stop>0000-00-00T01: 09: 00</wea:stop>
+        <wea:date>0000-00-27T00: 00: 00</wea:date>
+        <wea:statistics>
+          <wea:cloudCover>8</wea:cloudCover>
+          <wea:pressure>1013</wea:pressure>
+          <wea:temp>13.58</wea:temp>
+  ...
 
 
