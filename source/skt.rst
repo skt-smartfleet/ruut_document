@@ -476,6 +476,8 @@ V2X 서비스 메시지를 획득 하려면 원하는 V2X 서비스의 유형과
      ]
    }
 
+:underline: 서비스 안정성 확보를 위하여 별도 권한을 획득하지 않은 사용자의 V2X Webhook URL 은 매일 자정에 삭제 됩니다.
+
 Incoming Webhook
 ''''''''''''''''''''''''''
 세부 정보는 :ref:`V2X 서비스 Incoming Webhook 명세 <v2xincoming>` 을 참고하시기 바랍니다.
